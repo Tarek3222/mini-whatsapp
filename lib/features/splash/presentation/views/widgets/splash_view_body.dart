@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/constants/assets_images.dart';
 import 'package:clone_chat/core/themes/app_colors.dart';
@@ -14,11 +13,21 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody> {
+class _SplashViewBodyState extends State<SplashViewBody>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
   @override
   void initState() {
     super.initState();
+    initScalingAnimation();
     navigateToLogin();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -27,9 +36,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       child: Column(
         children: [
           Spacer(),
-          Image.asset(
-            AssetsImages.logo,
-            height: 180,
+          ScaleTransition(
+            scale: _animation,
+            child: Image.asset(
+              AssetsImages.logo,
+              height: 180,
+            ),
           ),
           Text(
             'WhatsUp',
@@ -51,6 +63,17 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       () {
         GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
       },
+    );
+  }
+
+  void initScalingAnimation() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 2500),
+      vsync: this,
+    )..repeat();
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOutCirc,
     );
   }
 }

@@ -34,8 +34,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
           ScaleTransition(
             scale: _animation,
             child: Image.asset(
@@ -49,9 +49,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
               color: AppColors.secondaryColor,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 70,
+          ),
           Text('The best chat app of this century'),
-          Spacer(),
         ],
       ),
     );

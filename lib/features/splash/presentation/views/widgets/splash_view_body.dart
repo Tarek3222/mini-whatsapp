@@ -46,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           Text(
             'WhatsUp',
             style: Styles.textStyle24.copyWith(
-              color: AppColors.secondaryColor,
+              color: AppColors.primaryColor,
             ),
           ),
           SizedBox(

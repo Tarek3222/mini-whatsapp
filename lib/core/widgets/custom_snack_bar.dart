@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 SnackBar customSnackBar({required String text}) {
   return SnackBar(
-    content: Center(
+    content: FittedBox(
       child: Text(
         text,
         style: TextStyle(

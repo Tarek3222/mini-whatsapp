@@ -5,7 +5,7 @@ class HomeBottomNavBar extends StatelessWidget {
   const HomeBottomNavBar(
       {super.key, required this.selectedIndex, required this.onTap});
   final int selectedIndex;
-  final Function(int)? onTap;
+  final void Function(int)? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class HomeBottomNavBar extends StatelessWidget {
         fontWeight: FontWeight.bold,
       ),
       elevation: 0,
+      type: BottomNavigationBarType.fixed,
       showUnselectedLabels: true,
       unselectedLabelStyle: TextStyle(color: Colors.grey),
       selectedItemColor: AppColors.primaryColor,

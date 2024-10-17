@@ -20,6 +20,14 @@ class _LoginBodyState extends State<LoginBody> {
   TextEditingController passwordController = TextEditingController();
   bool isPasswordVisible = true;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(

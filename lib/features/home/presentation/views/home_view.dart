@@ -1,3 +1,4 @@
+import 'package:clone_chat/features/calls/presentation/views/calls_view.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_bottom_nav_bar.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_view_app_bar.dart';
@@ -16,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _screens = [
     const ChatView(),
     const StatusView(),
-    const Text('Calls'),
+    const CallsView(),
   ];
 
   @override

@@ -15,11 +15,11 @@ class StatusBody extends StatelessWidget {
           child: AddStatusListTile(),
         ),
         SliverToBoxAdapter(
-          child: UpdatesStateTitle(title: 'Recent updates'),
+          child: GreyTitleWithPadding(title: 'Recent updates'),
         ),
         BuildRecentUpdatesStatusList(),
         SliverToBoxAdapter(
-          child: UpdatesStateTitle(title: 'Viewed updates'),
+          child: GreyTitleWithPadding(title: 'Viewed updates'),
         ),
         BuildViewedUpdatesStatusList(),
       ],

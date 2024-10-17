@@ -3,8 +3,8 @@ import 'package:clone_chat/features/status/presentation/views/widgets/time_statu
 import 'package:clone_chat/features/status/presentation/views/widgets/title_status.dart';
 import 'package:flutter/material.dart';
 
-class CustomBuildOtherStatus extends StatelessWidget {
-  const CustomBuildOtherStatus({super.key, required this.backgroundColor});
+class CustomBuildStatus extends StatelessWidget {
+  const CustomBuildStatus({super.key, required this.backgroundColor});
   final Color backgroundColor;
 
   @override

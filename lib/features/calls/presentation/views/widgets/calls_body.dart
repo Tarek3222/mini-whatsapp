@@ -1,3 +1,5 @@
+import 'package:clone_chat/features/calls/presentation/views/widgets/build_calls_sliver_list.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/updates_state_title.dart';
 import 'package:flutter/material.dart';
 
 class CallsBody extends StatelessWidget {
@@ -5,6 +7,13 @@ class CallsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Calls');
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: GreyTitleWithPadding(title: 'Recent calls'),
+        ),
+        BuildCallsSliverList(),
+      ],
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:clone_chat/core/widgets/default_text.dart';
+import 'package:clone_chat/features/profile/presentation/views/widgets/field_with_shadow.dart';
 import 'package:flutter/material.dart';
 
 class NameField extends StatelessWidget {
@@ -9,10 +10,12 @@ class NameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return defaultText(
-      type: TextInputType.text,
-      label: name,
-      controller: nameController,
+    return FieldWithShadow(
+      child: defaultText(
+        type: TextInputType.text,
+        label: name,
+        controller: nameController,
+      ),
     );
   }
 }

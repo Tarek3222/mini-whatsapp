@@ -8,8 +8,8 @@ class TimeStatusToUpload extends StatelessWidget {
     return Text(
       'Today, 12:30 pm',
       style: TextStyle(
-        color: Colors.grey.withOpacity(0.7),
-        fontWeight: FontWeight.w500,
+        color: Colors.grey,
+        fontWeight: FontWeight.bold,
       ),
     );
   }

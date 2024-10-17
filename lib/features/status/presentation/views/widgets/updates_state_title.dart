@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UpdatesStateTitle extends StatelessWidget {
-  const UpdatesStateTitle({super.key, required this.title});
+class GreyTitleWithPadding extends StatelessWidget {
+  const GreyTitleWithPadding({super.key, required this.title});
   final String title;
 
   @override
@@ -12,7 +12,7 @@ class UpdatesStateTitle extends StatelessWidget {
         title,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.grey.withOpacity(0.7),
+          color: Colors.grey,
         ),
       ),
     );

@@ -29,7 +29,7 @@ abstract class AppRouters {
         },
       ),
       GoRoute(
-        path: kHomeView,
+        path: kProfileView,
         builder: (context, state) {
           return const ProfileView();
         },

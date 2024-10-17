@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BuildIconAddNewStatus extends StatelessWidget {
-  const BuildIconAddNewStatus({super.key});
+class BuildIconAddStatus extends StatelessWidget {
+  const BuildIconAddStatus({super.key});
 
   @override
   Widget build(BuildContext context) {

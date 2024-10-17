@@ -1,7 +1,7 @@
 import 'package:clone_chat/features/status/presentation/views/widgets/build_recent_updates_status_list.dart';
 import 'package:clone_chat/features/status/presentation/views/widgets/build_viewed_updates_status_list.dart';
-import 'package:clone_chat/features/status/presentation/views/widgets/custom_build_my_status.dart';
-import 'package:clone_chat/features/status/presentation/views/widgets/title_updates.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/add_status_list_tile.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/updates_state_title.dart';
 import 'package:flutter/material.dart';
 
 class StatusBody extends StatelessWidget {
@@ -12,14 +12,14 @@ class StatusBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: CustomBuildMyStatus(),
+          child: AddStatusListTile(),
         ),
         SliverToBoxAdapter(
-          child: TitleUpdates(title: 'Recent updates'),
+          child: UpdatesStateTitle(title: 'Recent updates'),
         ),
         BuildRecentUpdatesStatusList(),
         SliverToBoxAdapter(
-          child: TitleUpdates(title: 'Viewed updates'),
+          child: UpdatesStateTitle(title: 'Viewed updates'),
         ),
         BuildViewedUpdatesStatusList(),
       ],

@@ -6,10 +6,12 @@ class NameChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'John Doe',
+      'Tarek Ahmed',
       style: TextStyle(
         fontWeight: FontWeight.bold,
+        fontSize: 18,
       ),
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

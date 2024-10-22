@@ -4,10 +4,13 @@ import 'package:clone_chat/features/profile/presentation/views/profile_view.dart
 import 'package:clone_chat/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/home/presentation/views/chat_view.dart';
+
 abstract class AppRouters {
   static const String kLoginView = '/loginView';
   static const String kHomeView = '/homeView';
   static const String kProfileView = '/profileView';
+  static const String kChatView = '/chatView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -32,6 +35,12 @@ abstract class AppRouters {
         path: kProfileView,
         builder: (context, state) {
           return const ProfileView();
+        },
+      ),
+      GoRoute(
+        path: kChatView,
+        builder: (context, state) {
+          return const ChatView();
         },
       ),
     ],

@@ -2,8 +2,8 @@ import 'package:clone_chat/features/home/presentation/views/widgets/build_chats_
 import 'package:clone_chat/features/home/presentation/views/widgets/new_messege_button.dart';
 import 'package:flutter/material.dart';
 
-class ChatView extends StatelessWidget {
-  const ChatView({super.key});
+class ChatsView extends StatelessWidget {
+  const ChatsView({super.key});
 
   @override
   Widget build(BuildContext context) {

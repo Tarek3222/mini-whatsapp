@@ -22,9 +22,11 @@ Widget defaultText({
     decoration: InputDecoration(
       labelText: label,
       hintText: hint,
-      prefixIcon: Icon(
-        prefixIcon,
-      ),
+      prefixIcon: prefixIcon == null
+          ? null
+          : Icon(
+              prefixIcon,
+            ),
       suffixIcon: suffixIcon == null
           ? null
           : IconButton(

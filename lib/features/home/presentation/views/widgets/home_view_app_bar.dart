@@ -9,6 +9,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         side: BorderSide(
@@ -62,7 +63,9 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.red,
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+                },
               ),
             ];
           },

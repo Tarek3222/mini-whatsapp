@@ -42,22 +42,22 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
           itemBuilder: (context) {
             return [
               PopupMenuItem(
-                child: Text('profile'),
+                child: Text('Profile'),
                 onTap: () {
                   GoRouter.of(context).push(AppRouters.kProfileView);
                 },
               ),
               PopupMenuItem(
-                child: Text('settings'),
+                child: Text('New Group'),
                 onTap: () {},
               ),
               PopupMenuItem(
-                child: Text('New group'),
+                child: Text('Settings'),
                 onTap: () {},
               ),
               PopupMenuItem(
                 child: Text(
-                  'logout',
+                  'Logout',
                   style: TextStyle(
                     color: Colors.red,
                   ),

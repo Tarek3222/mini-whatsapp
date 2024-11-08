@@ -1,7 +1,5 @@
-import 'package:clone_chat/features/status/presentation/views/widgets/build_recent_updates_status_list.dart';
-import 'package:clone_chat/features/status/presentation/views/widgets/build_viewed_updates_status_list.dart';
-import 'package:clone_chat/features/status/presentation/views/widgets/add_status_list_tile.dart';
-import 'package:clone_chat/features/status/presentation/views/widgets/updates_state_title.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/build_all_state_fo_status.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/new_status_button.dart';
 import 'package:flutter/material.dart';
 
 class StatusBody extends StatelessWidget {
@@ -9,19 +7,14 @@ class StatusBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: AddStatusListTile(),
+    return Stack(
+      children: [
+        BuildAllStateFoStatus(),
+        Positioned(
+          bottom: 20,
+          right: 20,
+          child: NewStatusButton(),
         ),
-        SliverToBoxAdapter(
-          child: GreyTitleWithPadding(title: 'Recent updates'),
-        ),
-        BuildRecentUpdatesStatusList(),
-        SliverToBoxAdapter(
-          child: GreyTitleWithPadding(title: 'Viewed updates'),
-        ),
-        BuildViewedUpdatesStatusList(),
       ],
     );
   }

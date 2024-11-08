@@ -8,7 +8,7 @@ class SignUpTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       fit: BoxFit.scaleDown,
-      child: const Text(
+      child: Text(
         'Register To New Account',
         style: Styles.textStyle24,
         textAlign: TextAlign.center,

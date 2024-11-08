@@ -8,7 +8,7 @@ class LoginTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       fit: BoxFit.scaleDown,
-      child: const Text(
+      child: Text(
         'Log in to your account',
         style: Styles.textStyle24,
         textAlign: TextAlign.center,

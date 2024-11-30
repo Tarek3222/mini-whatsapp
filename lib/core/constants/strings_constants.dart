@@ -1,0 +1,11 @@
+const String kAllUsersCollection = 'users';
+const String kMessagesCollection = 'messages';
+const String kChatsCollection = 'chats';
+const String kNameUser = 'name';
+const String kEmailUser = 'email';
+const String kImageUser = 'image';
+const String kPhoneUser = 'phone';
+const String kLastMessage = 'lastMessage';
+const String kLastMessageTime = 'lastMessageTime';
+const String kIsSeen = 'isSeen';
+const String kIsOnline = 'isOnline';

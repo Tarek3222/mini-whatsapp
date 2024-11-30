@@ -1,4 +1,5 @@
 import 'package:clone_chat/core/constants/app_routers.dart';
+import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setUpServiceLocator();
   runApp(const MiniChatApp());
 }
 

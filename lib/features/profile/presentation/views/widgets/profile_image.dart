@@ -1,3 +1,4 @@
+import 'package:clone_chat/core/widgets/custom_chached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 
@@ -14,14 +15,7 @@ class ProfileImage extends StatelessWidget {
           imageUrl: imageProfile.isEmpty
               ? 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png'
               : imageProfile,
-          child: CircleAvatar(
-            radius: 60,
-            backgroundImage: NetworkImage(
-              imageProfile.isEmpty
-                  ? 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png'
-                  : imageProfile,
-            ),
-          ),
+          child: CustomChachedNetworkImage(imageUrl: imageProfile),
         ),
         Positioned(
           bottom: 0,

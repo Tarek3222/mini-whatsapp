@@ -19,6 +19,8 @@ class UserServices {
         kNameUser: user.name,
         kPhoneUser: user.phone,
         kEmailUser: user.email,
+        kImageUser: '',
+        kUidUser: '',
       });
       log('user added');
       return docRef.id;
@@ -27,25 +29,11 @@ class UserServices {
     }
   }
 
-  Future<void> updateUser(
-      {required UserModel user, required BuildContext context}) {
-    return users
-        .doc(user.uid)
-        .update({
-          kNameUser: user.name,
-          kPhoneUser: user.phone,
-          kImageUser: user.image
-        })
-        .then((value) => showAwsomeDialog(
-            message: 'User updated successfully',
-            context: context,
-            title: 'Success',
-            dialogType: DialogType.success))
-        .catchError((error) => showAwsomeDialog(
-            message: 'Something went wrong $error',
-            context: context,
-            title: 'Error',
-            dialogType: DialogType.error));
+  Future<void> updateUser({
+    required UserModel user,
+  }) {
+    return users.doc(user.uid).update(
+        {kNameUser: user.name, kPhoneUser: user.phone, kImageUser: user.image});
   }
 
   Future<void> deleteUser(

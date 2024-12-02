@@ -3,9 +3,7 @@ import 'package:clone_chat/features/profile/presentation/views/widgets/field_wit
 import 'package:flutter/material.dart';
 
 class NameField extends StatelessWidget {
-  const NameField(
-      {super.key, required this.name, required this.nameController});
-  final String name;
+  const NameField({super.key, required this.nameController});
   final TextEditingController nameController;
 
   @override
@@ -13,7 +11,7 @@ class NameField extends StatelessWidget {
     return FieldWithShadow(
       child: defaultText(
         type: TextInputType.text,
-        label: name,
+        label: 'name',
         controller: nameController,
       ),
     );

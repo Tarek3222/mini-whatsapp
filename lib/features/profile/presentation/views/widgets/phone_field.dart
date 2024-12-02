@@ -3,9 +3,7 @@ import 'package:clone_chat/features/profile/presentation/views/widgets/field_wit
 import 'package:flutter/material.dart';
 
 class PhoneField extends StatelessWidget {
-  const PhoneField(
-      {super.key, required this.phone, required this.phoneController});
-  final String phone;
+  const PhoneField({super.key, required this.phoneController});
   final TextEditingController phoneController;
 
   @override
@@ -13,7 +11,7 @@ class PhoneField extends StatelessWidget {
     return FieldWithShadow(
       child: defaultText(
         type: TextInputType.phone,
-        label: phone,
+        label: 'phone',
         controller: phoneController,
       ),
     );

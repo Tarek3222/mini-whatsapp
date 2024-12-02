@@ -3,6 +3,7 @@ import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/constants/assets_images.dart';
 import 'package:clone_chat/core/themes/app_colors.dart';
 import 'package:clone_chat/core/themes/styles.dart';
+import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -62,9 +63,20 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(milliseconds: 3000),
       () {
-        GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+        isUserLoggedIn();
       },
     );
+  }
+
+  isUserLoggedIn() {
+    if (AuthServices().auth.currentUser != null &&
+        AuthServices().auth.currentUser!.emailVerified) {
+      {
+        GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
+      }
+    } else {
+      GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+    }
   }
 
   void initScalingAnimation() {

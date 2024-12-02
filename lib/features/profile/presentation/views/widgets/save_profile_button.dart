@@ -2,14 +2,14 @@ import 'package:clone_chat/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SaveProfileButton extends StatelessWidget {
-  const SaveProfileButton({super.key});
-
+  const SaveProfileButton({super.key, this.onPressed});
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           padding: const EdgeInsets.symmetric(vertical: 15),

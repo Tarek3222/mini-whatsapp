@@ -22,7 +22,6 @@ class ProfileInformation extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           NameField(
-            name: 'Tarek Ahmed',
             nameController: nameController,
           ),
           const SizedBox(height: 30),
@@ -32,7 +31,6 @@ class ProfileInformation extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           PhoneField(
-            phone: '+201234567890',
             phoneController: phoneController,
           ),
         ],

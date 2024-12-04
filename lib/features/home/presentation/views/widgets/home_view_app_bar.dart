@@ -6,11 +6,16 @@ import 'package:clone_chat/core/themes/styles.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
+import 'package:clone_chat/features/home/presentation/view_model/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeViewAppBar({super.key});
+  const HomeViewAppBar(
+      {super.key, required this.isSearching, required this.onSearchPressed});
+  final bool isSearching;
+  final VoidCallback onSearchPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +29,18 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.grey,
         ),
       ),
-      title: Text(
-        'WhatsUp',
-        style: Styles.textStyle24.copyWith(
-          fontWeight: FontWeight.w600,
-        ),
-      ),
+      title: isSearching
+          ? buildTextField(context)
+          : Text(
+              'WhatsUp',
+              style: Styles.textStyle24.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
       actions: [
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search),
+          onPressed: onSearchPressed,
+          icon: Icon(isSearching ? Icons.close : Icons.search),
         ),
         PopupMenuButton(
           elevation: 0,
@@ -93,6 +100,25 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
           width: 10,
         ),
       ],
+    );
+  }
+
+  Widget buildTextField(context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Search for a chat',
+        hintStyle: TextStyle(letterSpacing: 1.2),
+        border: InputBorder.none,
+      ),
+      autofocus: true,
+      style: TextStyle(letterSpacing: 1.2),
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          BlocProvider.of<SearchCubit>(context).searchUser(value);
+        } else {
+          BlocProvider.of<SearchCubit>(context).searchUser(value);
+        }
+      },
     );
   }
 

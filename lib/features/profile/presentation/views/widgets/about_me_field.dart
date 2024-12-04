@@ -12,6 +12,13 @@ class AboutMeField extends StatelessWidget {
       child: defaultText(
         type: TextInputType.text,
         controller: aboutMeController,
+        hint: 'Enter your about me',
+        validate: (value) {
+          if (value!.isEmpty) {
+            return 'about me must not be empty';
+          }
+          return null;
+        },
       ),
     );
   }

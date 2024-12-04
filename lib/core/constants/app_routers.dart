@@ -4,6 +4,7 @@ import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/log
 import 'package:clone_chat/features/auth/presentation/view_model/register_cubit/register_cubit.dart';
 import 'package:clone_chat/features/auth/presentation/views/login_view.dart';
 import 'package:clone_chat/features/auth/presentation/views/signup_view.dart';
+import 'package:clone_chat/features/home/presentation/view_model/cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/chat_view.dart';
 import 'package:clone_chat/features/home/presentation/views/home_view.dart';
 import 'package:clone_chat/features/profile/presentation/views/profile_view.dart';
@@ -51,7 +52,10 @@ abstract class AppRouters {
       GoRoute(
         path: kHomeView,
         builder: (context, state) {
-          return const HomeView();
+          return BlocProvider(
+            create: (context) => SearchCubit(),
+            child: const HomeView(),
+          );
         },
       ),
       GoRoute(

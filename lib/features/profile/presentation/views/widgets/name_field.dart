@@ -12,6 +12,13 @@ class NameField extends StatelessWidget {
       child: defaultText(
         type: TextInputType.text,
         controller: nameController,
+        hint: 'Enter your name',
+        validate: (value) {
+          if (value!.isEmpty) {
+            return 'name must not be empty';
+          }
+          return null;
+        },
       ),
     );
   }

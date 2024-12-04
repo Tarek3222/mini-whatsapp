@@ -10,9 +10,15 @@ class PhoneField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FieldWithShadow(
       child: defaultText(
-        type: TextInputType.phone,
-        controller: phoneController,
-      ),
+          type: TextInputType.phone,
+          controller: phoneController,
+          hint: 'Enter your phone number',
+          validate: (value) {
+            if (value!.isEmpty) {
+              return 'phone must not be empty';
+            }
+            return null;
+          }),
     );
   }
 }

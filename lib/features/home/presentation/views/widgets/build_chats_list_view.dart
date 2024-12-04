@@ -16,7 +16,10 @@ class BuildChatsListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            GoRouter.of(context).push(AppRouters.kChatView);
+            GoRouter.of(context).push(
+              AppRouters.kChatView,
+              extra: chatsUsers[index],
+            );
           },
           child: CustomBuildChat(
             chatUser: chatsUsers[index],

@@ -1,3 +1,4 @@
+import 'package:clone_chat/core/models/chat_user.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/features/auth/data/repos/my_repo.dart';
 import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/login_cubit.dart';
@@ -61,7 +62,9 @@ abstract class AppRouters {
       GoRoute(
         path: kChatView,
         builder: (context, state) {
-          return const ChatView();
+          return ChatView(
+            chatUser: state.extra as ChatUser,
+          );
         },
       ),
       GoRoute(

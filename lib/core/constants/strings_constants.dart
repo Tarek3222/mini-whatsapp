@@ -1,5 +1,4 @@
 const String kAllUsersCollection = 'AllUsers';
-const String kMessagesCollection = 'messages';
 const String kChatsCollection = 'chats';
 const String kNameUser = 'name';
 const String kAboutUser = 'about';
@@ -14,3 +13,6 @@ const String kPushToken = 'pushToken';
 const String kLastMessageTime = 'lastMessageTime';
 const String kIsSeen = 'isSeen';
 const String kIsOnline = 'isOnline';
+
+//  For Messeges
+const String kMessagesCollection = 'messeges';

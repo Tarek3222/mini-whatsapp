@@ -53,24 +53,30 @@ class _LoginBodyState extends State<LoginBody> {
             try {
               await state.userCredential.user!.sendEmailVerification();
               showAwsomeDialog(
-                  message: 'Please verify your email',
-                  context: context,
-                  title: 'Email not verified',
-                  dialogType: DialogType.error);
+                message: 'Please verify your email',
+                context: context,
+                title: 'Email not verified',
+                dialogType: DialogType.error,
+                btnOkOnPress: () {},
+              );
             } catch (e) {
               showAwsomeDialog(
-                  message: 'Something went wrong to verify your email',
-                  context: context,
-                  title: 'Error',
-                  dialogType: DialogType.error);
+                message: 'Something went wrong to verify your email',
+                context: context,
+                title: 'Error',
+                dialogType: DialogType.error,
+                btnOkOnPress: () {},
+              );
             }
           }
         } else if (state is LoginFailure) {
           showAwsomeDialog(
-              message: state.errorMessage,
-              context: context,
-              title: 'Error',
-              dialogType: DialogType.error);
+            message: state.errorMessage,
+            context: context,
+            title: 'Error',
+            dialogType: DialogType.error,
+            btnOkOnPress: () {},
+          );
         }
       },
       builder: (context, state) {
@@ -114,25 +120,31 @@ class _LoginBodyState extends State<LoginBody> {
                               email: emailController.text.trim(),
                             );
                             showAwsomeDialog(
-                                message: 'Check your email to reset password',
-                                context: context,
-                                title: 'Reset Password',
-                                dialogType: DialogType.success);
+                              message: 'Check your email to reset password',
+                              context: context,
+                              title: 'Reset Password',
+                              dialogType: DialogType.success,
+                              btnCancelOnPress: () {},
+                            );
                           } catch (e) {
                             showAwsomeDialog(
-                                message:
-                                    'Please enter a valid email, to reset password',
-                                context: context,
-                                title: 'Error',
-                                dialogType: DialogType.error);
-                          }
-                        } else {
-                          showAwsomeDialog(
                               message:
                                   'Please enter a valid email, to reset password',
                               context: context,
                               title: 'Error',
-                              dialogType: DialogType.error);
+                              dialogType: DialogType.error,
+                              btnOkOnPress: () {},
+                            );
+                          }
+                        } else {
+                          showAwsomeDialog(
+                            message:
+                                'Please enter a valid email, to reset password',
+                            context: context,
+                            title: 'Error',
+                            dialogType: DialogType.error,
+                            btnOkOnPress: () {},
+                          );
                         }
                       },
                     ),

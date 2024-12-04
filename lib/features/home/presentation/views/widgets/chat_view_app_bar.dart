@@ -21,10 +21,13 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           const SizedBox(width: 3),
           AvatarChat(
+            imageUrl: '',
             redius: 22,
           ),
           const SizedBox(width: 10),
-          const NameChat(),
+          const NameChat(
+            name: 'Tarek Ahmed',
+          ),
         ],
       ),
       shape: RoundedRectangleBorder(

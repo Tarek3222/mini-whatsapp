@@ -10,6 +10,7 @@ class ProfileViewAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Colors.green,
       ),
       elevation: 0,
+      scrolledUnderElevation: 0,
       backgroundColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         side: BorderSide(

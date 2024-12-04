@@ -1,5 +1,5 @@
 import 'package:clone_chat/core/errors/auth_failure.dart';
-import 'package:clone_chat/core/models/user_model.dart';
+import 'package:clone_chat/core/models/chat_user.dart';
 import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:dartz/dartz.dart';
@@ -15,14 +15,29 @@ class MyRepo {
       required String name,
       required String phone}) async {
     try {
-      await UserServices().addUser(
-          user: UserModel(
-        name: name,
-        phone: phone,
-        email: email,
-      ));
       var userCred =
           await authServices.register(email: email, password: password);
+      if (userCred.user != null) {
+        final time = DateTime.now().millisecondsSinceEpoch.toString();
+        userCred.user!.updateDisplayName(name);
+        await UserServices().addUser(
+            uid: userCred.user!.uid,
+            user: ChatUser(
+              name: name,
+              phone: phone,
+              email: email,
+              image: '',
+              uid: userCred.user!.uid,
+              about: "Hey there, I'm using Clone Chat",
+              pushToken: "",
+              isOnline: false,
+              isSeen: false,
+              lastMessage: '',
+              lastMessageTime: '',
+              createdAt: time,
+              lastActive: time,
+            ));
+      }
       return Right(userCred);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {

@@ -1,8 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/themes/styles.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
+import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,6 +17,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
+      scrolledUnderElevation: 0,
       shape: RoundedRectangleBorder(
         side: BorderSide(
           width: 0.5,
@@ -67,9 +70,19 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.red,
                   ),
                 ),
-                onTap: () async {
-                  await getIt<AuthServices>().logout();
-                  GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+                onTap: () {
+                  showAwsomeDialog(
+                    message: 'Do you want to logout?',
+                    context: context,
+                    title: 'Logout',
+                    dialogType: DialogType.warning,
+                    btnOkOnPress: () async {
+                      await getIt<AuthServices>().logout();
+                      GoRouter.of(context)
+                          .pushReplacement(AppRouters.kLoginView);
+                    },
+                    btnCancelOnPress: () {},
+                  );
                 },
               ),
             ];

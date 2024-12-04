@@ -5,6 +5,8 @@ showAwsomeDialog(
     {required String message,
     required BuildContext context,
     required String title,
+    void Function()? btnOkOnPress,
+    void Function()? btnCancelOnPress,
     DialogType dialogType = DialogType.info}) {
   return AwesomeDialog(
     context: context,
@@ -12,6 +14,7 @@ showAwsomeDialog(
     animType: AnimType.rightSlide,
     title: title,
     desc: message,
-    btnOkOnPress: () {},
+    btnOkOnPress: btnOkOnPress,
+    btnCancelOnPress: btnCancelOnPress,
   )..show();
 }

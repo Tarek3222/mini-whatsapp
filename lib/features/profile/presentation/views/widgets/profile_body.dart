@@ -3,9 +3,9 @@
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:clone_chat/core/constants/strings_constants.dart';
 import 'package:clone_chat/core/function/show_snack_bar.dart';
-import 'package:clone_chat/core/models/user_model.dart';
+import 'package:clone_chat/core/models/chat_user.dart';
+import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:clone_chat/core/widgets/custom_loading_indecator.dart';
 import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
@@ -28,6 +28,7 @@ class ProfileBody extends StatefulWidget {
 class _ProfileBodyState extends State<ProfileBody> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController aboutMeController = TextEditingController();
   String? selectedImage;
   bool isUploading = false;
   bool isLoading = false;
@@ -35,31 +36,17 @@ class _ProfileBodyState extends State<ProfileBody> {
   File? file;
   @override
   Widget build(BuildContext context) {
-    String email = AuthServices().auth.currentUser!.email.toString();
     return StreamBuilder(
-        stream: UserServices().getAllUsers(),
+        stream: getIt.get<UserServices>().getCurrentUser(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return CustomLoadingIndecator();
           }
-          List<UserModel> users = [];
-          for (var doc in snapshot.data!.docs) {
-            if (doc.get(kEmailUser) == email) {
-              users.add(
-                UserModel(
-                  name: doc.get(kNameUser),
-                  email: doc.get(kEmailUser),
-                  phone: doc.get(kPhoneUser),
-                  uid: doc.id,
-                  image: doc.get(kImageUser),
-                ),
-              );
-            }
-          }
-          var all = users.where((element) => element.email == email).toList();
-          var userModel = all[0];
+          var userModel =
+              ChatUser.fromJson(snapshot.data!.data()! as Map<String, dynamic>);
           nameController.text = userModel.name.toString();
           phoneController.text = userModel.phone.toString();
+          aboutMeController.text = userModel.about.toString();
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -101,12 +88,16 @@ class _ProfileBodyState extends State<ProfileBody> {
                   height: 10,
                 ),
                 if (isUploading) const CustomLoadingIndecator(),
+                Text(
+                  userModel.email.toString(),
+                ),
                 const Divider(
-                  height: 70,
+                  height: 50,
                 ),
                 ProfileInformation(
                   nameController: nameController,
                   phoneController: phoneController,
+                  aboutMeController: aboutMeController,
                 ),
                 const SizedBox(
                   height: 45,
@@ -116,15 +107,26 @@ class _ProfileBodyState extends State<ProfileBody> {
                     setState(() {
                       isLoading = true;
                     });
-                    UserModel user = UserModel(
+                    ChatUser user = ChatUser(
                       name: nameController.text,
                       phone: phoneController.text,
                       image: selectedImage ?? userModel.image.toString(),
                       email: userModel.email,
                       uid: userModel.uid,
+                      about: aboutMeController.text,
                     );
                     try {
                       await UserServices().updateUser(user: user);
+                      getIt
+                          .get<AuthServices>()
+                          .auth
+                          .currentUser!
+                          .updateDisplayName(nameController.text);
+                      getIt
+                          .get<AuthServices>()
+                          .auth
+                          .currentUser!
+                          .updatePhotoURL(user.image.toString());
                       showSnackBar(context, message: 'Profile updated');
                       Navigator.pop(context);
                     } catch (e) {

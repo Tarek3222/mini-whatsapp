@@ -11,7 +11,6 @@ class PhoneField extends StatelessWidget {
     return FieldWithShadow(
       child: defaultText(
         type: TextInputType.phone,
-        label: 'phone',
         controller: phoneController,
       ),
     );

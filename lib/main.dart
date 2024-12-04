@@ -29,6 +29,7 @@ class MiniChatApp extends StatelessWidget {
           return MaterialApp.router(
             routerConfig: AppRouters.router,
             debugShowCheckedModeBanner: false,
+            title: 'Mini Chat',
             theme: ThemeData(
               textTheme: GoogleFonts.interTextTheme(),
               useMaterial3: true,

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomChachedNetworkImage extends StatelessWidget {
-  const CustomChachedNetworkImage({super.key, required this.imageUrl});
+  const CustomChachedNetworkImage(
+      {super.key, required this.imageUrl, this.height});
   final String imageUrl;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,8 @@ class CustomChachedNetworkImage extends StatelessWidget {
           ? 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png'
           : imageUrl,
       imageBuilder: (context, imageProvider) => Container(
-        width: 120.w,
-        height: 120.h,
+        width: height ?? 120.w,
+        height: height ?? 120.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(image: imageProvider, fit: BoxFit.cover),

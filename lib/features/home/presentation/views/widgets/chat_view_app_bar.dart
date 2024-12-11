@@ -13,7 +13,6 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
       elevation: 0,
       scrolledUnderElevation: 0,
       title: InkWell(
@@ -22,12 +21,6 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         child: Row(
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.arrow_back),
-            ),
             const SizedBox(width: 15),
             AvatarChat(
               user: chatUser,

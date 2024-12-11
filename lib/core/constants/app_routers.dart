@@ -11,6 +11,8 @@ import 'package:clone_chat/features/home/presentation/views/home_view.dart';
 import 'package:clone_chat/features/home/presentation/views/user_profile_view.dart';
 import 'package:clone_chat/features/profile/presentation/views/profile_view.dart';
 import 'package:clone_chat/features/splash/presentation/views/splash_view.dart';
+import 'package:clone_chat/features/status/presentation/views/add_new_status_view.dart';
+import 'package:clone_chat/features/status/presentation/views/stories_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,6 +24,8 @@ abstract class AppRouters {
   static const String kProfileView = '/profileView';
   static const String kChatView = '/chatView';
   static const String kUserProfile = '/userProfile';
+  static const String kAddNewStatusView = '/addNewStatusView';
+  static const String kStoriesView = '/storiesView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -81,6 +85,18 @@ abstract class AppRouters {
         path: kProfileView,
         builder: (context, state) {
           return const ProfileView();
+        },
+      ),
+      GoRoute(
+        path: kAddNewStatusView,
+        builder: (context, state) {
+          return const AddNewStatusView();
+        },
+      ),
+      GoRoute(
+        path: kStoriesView,
+        builder: (context, state) {
+          return const StoriesView();
         },
       ),
     ],

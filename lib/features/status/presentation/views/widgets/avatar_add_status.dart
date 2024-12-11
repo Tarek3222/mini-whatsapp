@@ -1,4 +1,4 @@
-import 'package:clone_chat/features/status/presentation/views/widgets/avatar_status.dart';
+import 'package:clone_chat/features/status/presentation/views/widgets/avatar_new_status.dart';
 import 'package:clone_chat/features/status/presentation/views/widgets/build_icon_add_status.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class AvatarAddStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AvatarStatus(),
+        AvatarNewStatus(),
         Positioned(
           bottom: 0,
           right: 0,

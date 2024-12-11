@@ -9,7 +9,7 @@ class StatusBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BuildAllStateFoStatus(),
+        BuildAllStateOfStatus(),
         Positioned(
           bottom: 20,
           right: 20,

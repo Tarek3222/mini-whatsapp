@@ -52,6 +52,9 @@ dependencies:
   http: ^1.2.2
   image_picker: ^1.1.2
   insta_image_viewer: ^1.0.4
+  status_view: ^0.0.2
+  story_view: ^0.16.5
+  video_player: ^2.9.2
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.1"

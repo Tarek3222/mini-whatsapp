@@ -4,8 +4,8 @@ import 'package:clone_chat/features/status/presentation/views/widgets/build_view
 import 'package:clone_chat/features/status/presentation/views/widgets/updates_state_title.dart';
 import 'package:flutter/material.dart';
 
-class BuildAllStateFoStatus extends StatelessWidget {
-  const BuildAllStateFoStatus({super.key});
+class BuildAllStateOfStatus extends StatelessWidget {
+  const BuildAllStateOfStatus({super.key});
 
   @override
   Widget build(BuildContext context) {

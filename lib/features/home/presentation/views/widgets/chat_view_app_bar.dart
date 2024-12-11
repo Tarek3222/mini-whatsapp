@@ -21,7 +21,6 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         child: Row(
           children: [
-            const SizedBox(width: 15),
             AvatarChat(
               user: chatUser,
               redius: 50,

@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "269564714995",
+    "project_id": "market-smart-device",
+    "storage_bucket": "market-smart-device.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269564714995:android:e79a3c52c90dcf80273c86",
+        "android_client_info": {
+          "package_name": "com.example.clone_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ1IV5mgMn9nOmJZzfzAXT4PulI3yMyeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269564714995:android:5c2d24334798ce7f273c86",
+        "android_client_info": {
+          "package_name": "com.example.market_devi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ1IV5mgMn9nOmJZzfzAXT4PulI3yMyeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269564714995:android:642f8310a287c58b273c86",
+        "android_client_info": {
+          "package_name": "com.example.market_devices"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ1IV5mgMn9nOmJZzfzAXT4PulI3yMyeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269564714995:android:3af6846efbb14cfd273c86",
+        "android_client_info": {
+          "package_name": "com.example.market_smar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ1IV5mgMn9nOmJZzfzAXT4PulI3yMyeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269564714995:android:92819556f2228c97273c86",
+        "android_client_info": {
+          "package_name": "com.example.market_smart_device"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ1IV5mgMn9nOmJZzfzAXT4PulI3yMyeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

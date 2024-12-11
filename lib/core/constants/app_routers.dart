@@ -5,9 +5,10 @@ import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/log
 import 'package:clone_chat/features/auth/presentation/view_model/register_cubit/register_cubit.dart';
 import 'package:clone_chat/features/auth/presentation/views/login_view.dart';
 import 'package:clone_chat/features/auth/presentation/views/signup_view.dart';
-import 'package:clone_chat/features/home/presentation/view_model/cubit/search_cubit.dart';
+import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/chat_view.dart';
 import 'package:clone_chat/features/home/presentation/views/home_view.dart';
+import 'package:clone_chat/features/home/presentation/views/user_profile_view.dart';
 import 'package:clone_chat/features/profile/presentation/views/profile_view.dart';
 import 'package:clone_chat/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ abstract class AppRouters {
   static const String kSignUpView = '/signUpView';
   static const String kProfileView = '/profileView';
   static const String kChatView = '/chatView';
+  static const String kUserProfile = '/userProfile';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -64,6 +66,14 @@ abstract class AppRouters {
         builder: (context, state) {
           return ChatView(
             chatUser: state.extra as ChatUser,
+          );
+        },
+      ),
+      GoRoute(
+        path: kUserProfile,
+        builder: (context, state) {
+          return UserProfileView(
+            user: state.extra as ChatUser,
           );
         },
       ),

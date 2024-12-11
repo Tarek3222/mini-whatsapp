@@ -25,8 +25,12 @@ class UserServices {
   Future<void> updateUser({
     required ChatUser user,
   }) {
-    return users.doc(user.uid).update(
-        {kNameUser: user.name, kPhoneUser: user.phone, kImageUser: user.image});
+    return users.doc(user.uid).update({
+      kNameUser: user.name,
+      kPhoneUser: user.phone,
+      kImageUser: user.image,
+      kAboutUser: user.about,
+    });
   }
 
   Future<void> deleteUser(
@@ -40,10 +44,59 @@ class UserServices {
         .snapshots();
   }
 
-  Stream<QuerySnapshot> getAllUsers() {
+  Stream<QuerySnapshot> getAllUsers({required List<String> usersId}) {
     return users
-        .where(kUidUser,
-            isNotEqualTo: getIt.get<AuthServices>().auth.currentUser!.uid)
+        .where(kUidUser, whereIn: usersId.isEmpty ? [''] : usersId)
+        .snapshots();
+  }
+
+  Stream<DocumentSnapshot> getUserInfo(ChatUser user) {
+    return users.doc(user.uid).snapshots();
+  }
+
+  Future<void> updateActiveStatus({required bool isOnline}) async {
+    return await users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .update(
+      {
+        kIsOnline: isOnline,
+        kLastActive: DateTime.now().millisecondsSinceEpoch.toString(),
+      },
+    );
+  }
+
+  Future<void> updatePushToken({required String token}) async {
+    return await users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .update(
+      {
+        kPushToken: token,
+      },
+    );
+  }
+
+  //for Adding new chat User
+  Future<bool> addNewChatUser({required String email}) async {
+    final data = await users.where(kEmailUser, isEqualTo: email).get();
+    if (data.docs.isNotEmpty &&
+        data.docs.first.id != getIt.get<AuthServices>().auth.currentUser!.uid) {
+      //user exists
+      users
+          .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+          .collection("my_users")
+          .doc(data.docs.first.id)
+          .set({});
+      return true;
+    } else {
+      //user not exists
+      return false;
+    }
+  }
+
+  Stream<QuerySnapshot> getMyChatUsers() {
+    return users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .collection("my_users")
         .snapshots();
   }
 }

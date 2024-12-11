@@ -8,11 +8,16 @@ class ChatView extends StatelessWidget {
   final ChatUser chatUser;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ChatViewAppBar(
-        chatUser: chatUser,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        appBar: ChatViewAppBar(
+          chatUser: chatUser,
+        ),
+        body: ChatBody(
+          chatUser: chatUser,
+        ),
       ),
-      body: ChatBody(),
     );
   }
 }

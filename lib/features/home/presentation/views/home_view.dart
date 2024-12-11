@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:clone_chat/features/calls/presentation/views/calls_view.dart';
-import 'package:clone_chat/features/home/presentation/view_model/cubit/search_cubit.dart';
+import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_bottom_nav_bar.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_view_app_bar.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_view_body.dart';

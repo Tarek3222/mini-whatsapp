@@ -4,9 +4,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/themes/styles.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
+import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
-import 'package:clone_chat/features/home/presentation/view_model/cubit/search_cubit.dart';
+import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -84,6 +85,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                     title: 'Logout',
                     dialogType: DialogType.warning,
                     btnOkOnPress: () async {
+                      UserServices().updateActiveStatus(isOnline: false);
                       await getIt<AuthServices>().logout();
                       GoRouter.of(context)
                           .pushReplacement(AppRouters.kLoginView);

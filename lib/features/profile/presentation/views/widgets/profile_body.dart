@@ -125,17 +125,12 @@ class _ProfileBodyState extends State<ProfileBody> {
                             uid: userModel.uid,
                             about: aboutMeController.text,
                           );
-                          await UserServices().updateUser(user: user);
                           getIt
                               .get<AuthServices>()
                               .auth
                               .currentUser!
                               .updateDisplayName(nameController.text);
-                          getIt
-                              .get<AuthServices>()
-                              .auth
-                              .currentUser!
-                              .updatePhotoURL(user.image.toString());
+                          await UserServices().updateUser(user: user);
                           showSnackBar(context, message: 'Profile updated');
                           Navigator.pop(context);
                         } catch (e) {
@@ -166,73 +161,76 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   showCustomBottomSheet(context) {
     showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Pick Profile image',
-                  style: Styles.textStyle24,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        final ImagePicker picker = ImagePicker();
-                        final XFile? imageGellery = await picker.pickImage(
-                            source: ImageSource.gallery, imageQuality: 80);
-                        if (imageGellery != null) {
-                          setState(() {
-                            file = File(imageGellery.path);
-                            Navigator.pop(context);
-                          });
-                        }
-                      },
-                      icon: const Icon(
-                        Icons.image,
-                        color: AppColors.primaryColor,
-                        size: 50,
-                      ),
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Pick Profile image',
+                style: Styles.textStyle24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () async {
+                      final ImagePicker picker = ImagePicker();
+                      final XFile? imageGellery = await picker.pickImage(
+                          source: ImageSource.gallery, imageQuality: 80);
+                      if (imageGellery != null) {
+                        setState(() {
+                          file = File(imageGellery.path);
+                          Navigator.pop(context);
+                        });
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.image,
+                      color: AppColors.primaryColor,
+                      size: 50,
                     ),
-                    IconButton(
-                      onPressed: () async {
-                        final ImagePicker picker = ImagePicker();
-                        final XFile? imageCamera = await picker.pickImage(
-                            source: ImageSource.camera, imageQuality: 80);
-                        if (imageCamera != null) {
-                          setState(() {
-                            file = File(imageCamera.path);
-                            Navigator.pop(context);
-                          });
-                        }
-                      },
-                      icon: const Icon(
-                        Icons.camera_alt_outlined,
-                        color: AppColors.primaryColor,
-                        size: 50,
-                      ),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      final ImagePicker picker = ImagePicker();
+                      final XFile? imageCamera = await picker.pickImage(
+                          source: ImageSource.camera, imageQuality: 80);
+                      if (imageCamera != null) {
+                        setState(() {
+                          file = File(imageCamera.path);
+                          Navigator.pop(context);
+                        });
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.camera_alt_outlined,
+                      color: AppColors.primaryColor,
+                      size: 50,
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              const Divider(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: AppColors.primaryColor),
+                  ),
                 ),
-                const Divider(
-                  height: 10,
-                ),
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(color: AppColors.primaryColor),
-                        )))
-              ],
-            ),
-          );
-        });
+              )
+            ],
+          ),
+        );
+      },
+    );
   }
 }

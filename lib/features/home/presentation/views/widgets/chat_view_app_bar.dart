@@ -1,7 +1,11 @@
+import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/models/chat_user.dart';
+import 'package:clone_chat/core/utils/get_time_formated.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/avatar_chat.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/name_chat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatViewAppBar({super.key, required this.chatUser});
@@ -13,7 +17,9 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
       title: InkWell(
-        onTap: () {},
+        onTap: () {
+          GoRouter.of(context).push(AppRouters.kUserProfile, extra: chatUser);
+        },
         child: Row(
           children: [
             InkWell(
@@ -24,8 +30,9 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             const SizedBox(width: 15),
             AvatarChat(
-              imageUrl: chatUser.image ?? '',
+              user: chatUser,
               redius: 50,
+              isFromChat: true,
             ),
             const SizedBox(width: 10),
             Column(
@@ -35,10 +42,15 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                   name: chatUser.name ?? 'unknown user',
                 ),
                 Text(
-                  'last seen 2 days ago',
+                  chatUser.isOnline!
+                      ? 'Online'
+                      : getLastActiveTime(
+                          context: context,
+                          lastActive: chatUser.lastActive!,
+                        ),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Colors.black54,
-                      ),
+                      color: chatUser.isOnline! ? Colors.green : Colors.black54,
+                      fontSize: 12.sp),
                 ),
               ],
             ),

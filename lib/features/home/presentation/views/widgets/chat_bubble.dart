@@ -1,5 +1,9 @@
+import 'package:clone_chat/core/utils/get_time_formated.dart';
 import 'package:clone_chat/features/home/data/models/messege_model.dart';
+import 'package:clone_chat/features/home/data/services/messeges_services.dart';
+import 'package:clone_chat/features/home/presentation/views/widgets/custom_build_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatBubbleFromMe extends StatelessWidget {
   const ChatBubbleFromMe({super.key, required this.messege});
@@ -14,15 +18,17 @@ class ChatBubbleFromMe extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: Row(
             children: [
-              const Icon(
-                Icons.done_all_outlined,
-                color: Colors.blue,
-              ),
+              if (messege.read!.isNotEmpty)
+                const Icon(
+                  Icons.done_all_outlined,
+                  color: Colors.blue,
+                ),
               const SizedBox(
                 width: 5,
               ),
               Text(
-                '12:00 pm',
+                getReadAndSentTimeFormated(
+                    context: context, time: messege.sent ?? ''),
                 style: TextStyle(color: Colors.black45),
               ),
             ],
@@ -30,7 +36,7 @@ class ChatBubbleFromMe extends StatelessWidget {
         ),
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(messege.type == Type.image ? 4 : 12),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.green[200],
@@ -40,12 +46,14 @@ class ChatBubbleFromMe extends StatelessWidget {
                 bottomLeft: Radius.circular(30),
               ),
             ),
-            child: Text(
-              messege.message ?? '',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            child: messege.type == Type.image
+                ? CustomBuildNetworkImage(messegeUrl: messege.message!)
+                : Text(
+                    messege.message ?? '',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                    ),
+                  ),
           ),
         ),
       ],
@@ -58,12 +66,16 @@ class ChatBubbleFromFriend extends StatelessWidget {
   final MessegeModel messege;
   @override
   Widget build(BuildContext context) {
+    //update last message read
+    if (messege.read!.isEmpty) {
+      MessegesServices().updateMessegeReadStatus(messege);
+    }
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(messege.type == Type.image ? 4 : 12),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.blue[200],
@@ -73,18 +85,21 @@ class ChatBubbleFromFriend extends StatelessWidget {
                 bottomLeft: Radius.circular(30),
               ),
             ),
-            child: Text(
-              messege.message ?? '',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            child: messege.type == Type.image
+                ? CustomBuildNetworkImage(messegeUrl: messege.message!)
+                : Text(
+                    messege.message ?? '',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                    ),
+                  ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 10),
           child: Text(
-            '12:00 pm',
+            getReadAndSentTimeFormated(
+                context: context, time: messege.sent ?? ''),
             style: TextStyle(color: Colors.black45),
           ),
         ),

@@ -11,7 +11,7 @@ SnackBar customSnackBar({required String text}) {
         ),
       ),
     ),
-    duration: const Duration(seconds: 2),
+    duration: const Duration(seconds: 3),
     elevation: 0,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(

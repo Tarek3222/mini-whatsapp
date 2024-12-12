@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:story_view/story_view.dart';
 
 class StoriesView extends StatefulWidget {
-  const StoriesView({super.key});
+  const StoriesView({super.key, required this.stories});
+  final List stories;
 
   @override
   State<StoriesView> createState() => _StoriesViewState();
@@ -13,20 +14,19 @@ class _StoriesViewState extends State<StoriesView> {
   @override
   Widget build(BuildContext context) {
     return StoryView(
-      storyItems: [
-        StoryItem.pageImage(
-          url: "https://picsum.photos/200/300",
-          controller: controller,
-        ),
-        StoryItem.text(
-          title: 'Story 2',
-          backgroundColor: Colors.green,
-        ),
-        StoryItem.text(
-          title: 'Story 3',
-          backgroundColor: Colors.blue,
-        ),
-      ],
+      storyItems: widget.stories.map((story) {
+        if (story['type'] == 'image') {
+          return StoryItem.pageImage(
+            url: story['content'],
+            controller: controller,
+          );
+        } else {
+          return StoryItem.pageVideo(
+            story['content'],
+            controller: controller,
+          );
+        }
+      }).toList(),
       controller: controller,
       repeat: true,
       onVerticalSwipeComplete: (direction) {
@@ -34,7 +34,9 @@ class _StoriesViewState extends State<StoriesView> {
           Navigator.pop(context);
         }
       },
-      onComplete: () {},
+      onComplete: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

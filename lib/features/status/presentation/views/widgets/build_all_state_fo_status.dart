@@ -17,11 +17,13 @@ class BuildAllStateOfStatus extends StatelessWidget {
         SliverToBoxAdapter(
           child: GreyTitleWithPadding(title: 'Recent updates'),
         ),
-        BuildRecentUpdatesStatusList(),
-        SliverToBoxAdapter(
-          child: GreyTitleWithPadding(title: 'Viewed updates'),
+        const SliverToBoxAdapter(
+          child: BuildRecentUpdatesStatusList(),
         ),
-        BuildViewedUpdatesStatusList(),
+        // SliverToBoxAdapter(
+        //   child: GreyTitleWithPadding(title: 'Viewed updates'),
+        // ),
+        // BuildViewedUpdatesStatusList(),
       ],
     );
   }

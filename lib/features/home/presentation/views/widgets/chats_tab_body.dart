@@ -13,7 +13,7 @@ class ChatsTabBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: getIt.get<UserServices>().getMyChatUsers(),
+      stream: getIt.get<UserServices>().getMyUsers(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:

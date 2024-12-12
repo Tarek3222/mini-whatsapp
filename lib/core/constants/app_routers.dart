@@ -96,7 +96,9 @@ abstract class AppRouters {
       GoRoute(
         path: kStoriesView,
         builder: (context, state) {
-          return const StoriesView();
+          return StoriesView(
+            stories: state.extra as List,
+          );
         },
       ),
     ],

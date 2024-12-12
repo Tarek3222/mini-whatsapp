@@ -42,3 +42,14 @@ String getLastActiveTime(
   }
   return 'Last seen on ${time.day}/${time.month}/${time.year}';
 }
+
+String getTimeStoryFormated(
+    {required BuildContext context, required String time}) {
+  final DateTime sent = DateTime.fromMillisecondsSinceEpoch(int.parse(time));
+  final DateTime now = DateTime.now();
+  if (sent.year == now.year && sent.month == now.month && sent.day == now.day) {
+    return 'Today, ${TimeOfDay.fromDateTime(sent).format(context)}';
+  } else {
+    return 'Yesterday ${TimeOfDay.fromDateTime(sent).format(context)}';
+  }
+}

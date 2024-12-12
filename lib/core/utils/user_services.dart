@@ -1,12 +1,15 @@
-// ignore_for_file: use_build_context_synchronously, body_might_complete_normally_nullable
+// ignore_for_file: use_build_context_synchronously, body_might_complete_normally_nullable, depend_on_referenced_packages
 
 import 'dart:developer';
+import 'dart:io';
 import 'package:clone_chat/core/constants/strings_constants.dart';
 import 'package:clone_chat/core/models/chat_user.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class UserServices {
   CollectionReference users =
@@ -93,10 +96,47 @@ class UserServices {
     }
   }
 
-  Stream<QuerySnapshot> getMyChatUsers() {
+  Stream<QuerySnapshot> getMyUsers() {
     return users
         .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
         .collection("my_users")
         .snapshots();
+  }
+
+  Stream<QuerySnapshot> getAllMyUsersStories({required List<String> usersId}) {
+    return users
+        .where(kUidUser, whereIn: usersId.isEmpty ? [''] : usersId)
+        .where('stories', isNotEqualTo: []).snapshots();
+  }
+
+  Stream<DocumentSnapshot> getCurrentUserStories() {
+    return users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .snapshots();
+  }
+
+  Future<void> addStory({required String storyType, required File file}) async {
+    String fileName = basename(file.path);
+    var refStorage = FirebaseStorage.instance.ref(
+        'stories/${getIt.get<AuthServices>().auth.currentUser!.uid}/$fileName'); // create ref for storage and the name is all_images (folrder)
+    await refStorage.putFile(file);
+    String contentUrl = await refStorage.getDownloadURL();
+    return await users.doc(getIt.get<AuthServices>().auth.currentUser!.uid).set(
+      {
+        'stories': FieldValue.arrayUnion(
+          [
+            {
+              'uid': getIt.get<AuthServices>().auth.currentUser!.uid,
+              'storyId': DateTime.now().millisecondsSinceEpoch.toString(),
+              'content': contentUrl,
+              'type': storyType,
+              'time': DateTime.now().millisecondsSinceEpoch.toString(),
+              'Viewers': [],
+            }
+          ],
+        ),
+      },
+      SetOptions(merge: true),
+    );
   }
 }

@@ -13,34 +13,40 @@ class AddStatusListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: getIt.get<UserServices>().getCurrentUserStories(),
-        builder: (context, snapshot) {
-          ChatUser? user;
-          List stories = [];
-          if (snapshot.hasData) {
-            user = ChatUser.fromJson(
-                snapshot.data!.data()! as Map<String, dynamic>);
-            stories = user.stories ?? [];
-          }
-          return InkWell(
-            onTap: () {
+      stream: getIt.get<UserServices>().getCurrentUserStories(),
+      builder: (context, snapshot) {
+        ChatUser? user;
+        List stories = [];
+        if (snapshot.hasData) {
+          user =
+              ChatUser.fromJson(snapshot.data!.data()! as Map<String, dynamic>);
+          stories = user.stories ?? [];
+        }
+        return InkWell(
+          onTap: () {
+            if (stories.isEmpty) {
               GoRouter.of(context).push(AppRouters.kAddNewStatusView);
-            },
-            child: ListTile(
-              leading: AvatarAddStatus(
-                user: user,
-                stories: stories,
-              ),
-              title: TitleStatus(title: 'My Status'),
-              subtitle: Text(
-                'Tap to add status update',
-                style: TextStyle(
-                  color: Colors.grey.withOpacity(0.7),
-                  fontWeight: FontWeight.w600,
-                ),
+            } else {
+              GoRouter.of(context)
+                  .push(AppRouters.kMyAllStatusView, extra: stories);
+            }
+          },
+          child: ListTile(
+            leading: AvatarAddStatus(
+              user: user,
+              stories: stories,
+            ),
+            title: TitleStatus(title: 'My Status'),
+            subtitle: Text(
+              'Tap to add status update',
+              style: TextStyle(
+                color: Colors.grey.withOpacity(0.7),
+                fontWeight: FontWeight.w600,
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

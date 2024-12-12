@@ -115,6 +115,14 @@ class UserServices {
         .snapshots();
   }
 
+  Future<void> deleteStory({required Map<String, dynamic> story}) async {
+    final refStorage = FirebaseStorage.instance.refFromURL(story['content']);
+    await refStorage.delete();
+    return await users.doc(story['uid']).update({
+      'stories': FieldValue.arrayRemove([story])
+    });
+  }
+
   Future<void> addStory({required String storyType, required File file}) async {
     String fileName = basename(file.path);
     var refStorage = FirebaseStorage.instance.ref(

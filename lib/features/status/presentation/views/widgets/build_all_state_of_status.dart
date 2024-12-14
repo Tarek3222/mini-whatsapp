@@ -19,10 +19,6 @@ class BuildAllStateOfStatus extends StatelessWidget {
         const SliverToBoxAdapter(
           child: BuildRecentUpdatesStatusList(),
         ),
-        // SliverToBoxAdapter(
-        //   child: GreyTitleWithPadding(title: 'Viewed updates'),
-        // ),
-        // BuildViewedUpdatesStatusList(),
       ],
     );
   }

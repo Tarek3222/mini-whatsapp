@@ -47,12 +47,16 @@ class BuildRecentUpdatesStatusList extends StatelessWidget {
                       },
                     );
                   } else {
-                    return SizedBox();
+                    return Center(
+                      child: Text('No Users Found'),
+                    );
                   }
                 },
               );
             } else {
-              return SizedBox();
+              return Center(
+                child: Text('No Users Found'),
+              );
             }
           default:
             return SizedBox();

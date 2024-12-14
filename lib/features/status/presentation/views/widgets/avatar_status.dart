@@ -15,7 +15,7 @@ class AvatarStatus extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (stories.isNotEmpty) {
-          GoRouter.of(context).push(AppRouters.kStoriesView, extra: stories);
+          GoRouter.of(context).push(AppRouters.kStoriesView, extra: user);
         }
       },
       child: StatusView(

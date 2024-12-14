@@ -3,14 +3,15 @@ import 'package:clone_chat/features/status/presentation/views/widgets/my_all_sta
 import 'package:flutter/material.dart';
 
 class MyAllStatusView extends StatelessWidget {
-  const MyAllStatusView({super.key, required this.stories});
-  final List stories;
+  const MyAllStatusView({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MyAllStatusViewAppBar(),
-      body: MyAllStatusBody(stories: stories),
+      body: MyAllStatusBody(),
     );
   }
 }

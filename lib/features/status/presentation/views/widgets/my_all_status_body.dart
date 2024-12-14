@@ -3,8 +3,7 @@ import 'package:clone_chat/features/status/presentation/views/widgets/new_status
 import 'package:flutter/material.dart';
 
 class MyAllStatusBody extends StatelessWidget {
-  const MyAllStatusBody({super.key, required this.stories});
-  final List stories;
+  const MyAllStatusBody({super.key});
 
   @override
   Widget build(BuildContext context) {

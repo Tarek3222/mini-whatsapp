@@ -13,6 +13,7 @@ import 'package:clone_chat/features/profile/presentation/views/profile_view.dart
 import 'package:clone_chat/features/splash/presentation/views/splash_view.dart';
 import 'package:clone_chat/features/status/presentation/views/add_new_status_view.dart';
 import 'package:clone_chat/features/status/presentation/views/my_all_status_view.dart';
+import 'package:clone_chat/features/status/presentation/views/single_item_story_view.dart';
 import 'package:clone_chat/features/status/presentation/views/stories_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,7 @@ abstract class AppRouters {
   static const String kAddNewStatusView = '/addNewStatusView';
   static const String kStoriesView = '/storiesView';
   static const String kMyAllStatusView = '/myAllStatusView';
+  static const String kSingleStoryItemView = '/singleStoryItem';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -99,15 +101,21 @@ abstract class AppRouters {
         path: kStoriesView,
         builder: (context, state) {
           return StoriesView(
-            stories: state.extra as List,
+            user: state.extra as ChatUser,
           );
         },
       ),
       GoRoute(
         path: kMyAllStatusView,
         builder: (context, state) {
-          return MyAllStatusView(
-            stories: state.extra as List,
+          return MyAllStatusView();
+        },
+      ),
+      GoRoute(
+        path: kSingleStoryItemView,
+        builder: (context, state) {
+          return SingleItemStoryView(
+            story: state.extra as Map<String, dynamic>,
           );
         },
       ),

@@ -147,4 +147,15 @@ class UserServices {
       SetOptions(merge: true),
     );
   }
+
+  // for delete story after 24 hours
+  Future<void> deleteStoryAfter24Hours(
+      {required Map<String, dynamic> story}) async {
+    final DateTime uploadTime =
+        DateTime.fromMillisecondsSinceEpoch(int.parse(story['time']));
+    final DateTime now = DateTime.now();
+    if (now.difference(uploadTime).inHours > 24) {
+      return await deleteStory(story: story);
+    }
+  }
 }

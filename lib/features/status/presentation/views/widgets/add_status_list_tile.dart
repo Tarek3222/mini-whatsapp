@@ -21,6 +21,12 @@ class AddStatusListTile extends StatelessWidget {
           user =
               ChatUser.fromJson(snapshot.data!.data()! as Map<String, dynamic>);
           stories = user.stories ?? [];
+          // for delete story after 24 hours
+          if (stories.isNotEmpty) {
+            for (var story in stories) {
+              getIt.get<UserServices>().deleteStoryAfter24Hours(story: story);
+            }
+          }
         }
         return InkWell(
           onTap: () {

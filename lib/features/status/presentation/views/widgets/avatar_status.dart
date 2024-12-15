@@ -7,9 +7,14 @@ import 'package:go_router/go_router.dart';
 import 'package:status_view/status_view.dart';
 
 class AvatarStatus extends StatelessWidget {
-  const AvatarStatus({super.key, this.user, required this.stories});
+  const AvatarStatus(
+      {super.key,
+      this.user,
+      required this.stories,
+      required this.numberOfShownStories});
   final ChatUser? user;
   final List stories;
+  final int numberOfShownStories;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,7 +27,7 @@ class AvatarStatus extends StatelessWidget {
         radius: 32.r,
         spacing: 12.r,
         strokeWidth: 3,
-        indexOfSeenStatus: 0,
+        indexOfSeenStatus: numberOfShownStories,
         numberOfStatus: stories.length,
         padding: 4,
         centerImageUrl:

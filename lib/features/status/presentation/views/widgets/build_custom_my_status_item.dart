@@ -26,7 +26,7 @@ class BuildCustomMyStatusItem extends StatelessWidget {
               backgroundColor: AppColors.primaryColor,
               child: Text('Video'),
             ),
-      title: Text('views: 20'),
+      title: Text('views: ${story['Viewers'].length}'),
       subtitle: Text(
         getTimeStoryFormated(
           context: context,

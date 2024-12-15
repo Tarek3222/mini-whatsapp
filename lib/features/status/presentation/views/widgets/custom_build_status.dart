@@ -2,6 +2,7 @@ import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/models/chat_user.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/utils/user_services.dart';
+import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:clone_chat/features/status/presentation/views/widgets/avatar_status.dart';
 import 'package:clone_chat/features/status/presentation/views/widgets/time_status_to_upload.dart';
 import 'package:clone_chat/features/status/presentation/views/widgets/title_status.dart';
@@ -28,6 +29,7 @@ class CustomBuildStatus extends StatelessWidget {
         child: AvatarStatus(
           stories: stories,
           user: user,
+          numberOfShownStories: getNumberOfShownStories(),
         ),
       ),
       title: TitleStatus(title: user.name ?? 'Unknown user'),
@@ -35,5 +37,14 @@ class CustomBuildStatus extends StatelessWidget {
         stories: stories,
       ),
     );
+  }
+
+  int getNumberOfShownStories() {
+    int count = 0;
+    String currentUserId = getIt.get<AuthServices>().auth.currentUser!.uid;
+    for (var story in stories) {
+      if (story['Viewers'].contains(currentUserId)) count++;
+    }
+    return count;
   }
 }

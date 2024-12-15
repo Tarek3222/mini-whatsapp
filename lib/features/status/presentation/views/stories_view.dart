@@ -15,10 +15,23 @@ class StoriesView extends StatelessWidget {
         children: [
           StoriesViewBody(
             stories: user.stories ?? [],
+            user: user,
           ),
           Positioned(
             top: 50.h,
-            left: 20.w,
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          Positioned(
+            top: 50.h,
+            left: 40.w,
             child: CircleAvatar(
               radius: 30.r,
               backgroundImage: NetworkImage(user.image ??
@@ -27,7 +40,7 @@ class StoriesView extends StatelessWidget {
           ),
           Positioned(
             top: 50.h,
-            left: 90.w,
+            left: 110.w,
             child: Text(
               user.uid == getIt.get<AuthServices>().auth.currentUser!.uid
                   ? 'My Status'

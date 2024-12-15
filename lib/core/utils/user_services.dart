@@ -158,4 +158,14 @@ class UserServices {
       return await deleteStory(story: story);
     }
   }
+
+  // update number of viewers
+  Future<void> updateStoryViewers(
+      {required List stories, required String uid}) async {
+    return await users.doc(uid).update(
+      {
+        'stories': stories,
+      },
+    );
+  }
 }

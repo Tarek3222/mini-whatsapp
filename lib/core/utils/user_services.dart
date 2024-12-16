@@ -36,8 +36,9 @@ class UserServices {
     });
   }
 
-  Future<void> deleteUser(
-      {required String uid, required BuildContext context}) {
+  Future<void> deleteUser({
+    required String uid,
+  }) {
     return users.doc(uid).delete();
   }
 

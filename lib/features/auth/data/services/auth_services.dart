@@ -1,3 +1,5 @@
+import 'package:clone_chat/core/utils/service_locator.dart';
+import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthServices {
@@ -33,6 +35,9 @@ class AuthServices {
 
   Future<void> deleteAccount() async {
     await auth.currentUser!.delete();
+    await getIt.get<UserServices>().deleteUser(
+          uid: auth.currentUser!.uid,
+        );
   }
 
   Future<void> updateEmail({required String email}) async {

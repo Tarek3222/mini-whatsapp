@@ -19,6 +19,7 @@ import 'package:clone_chat/features/auth/presentation/views/widgets/register_row
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -48,6 +49,8 @@ class _LoginBodyState extends State<LoginBody> {
         if (state is LoginSuccess) {
           if (state.userCredential.user != null &&
               state.userCredential.user!.emailVerified) {
+            SharedPreferences prefs = getIt<SharedPreferences>();
+            await prefs.setString('password', passwordController.text.trim());
             GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
           } else {
             try {

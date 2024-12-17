@@ -14,6 +14,7 @@ class ChatMessageField extends StatelessWidget {
       onTap: onTap,
       decoration: InputDecoration(
         hintText: 'Type a message',
+        hintStyle: TextStyle(letterSpacing: 0.2),
         border: InputBorder.none,
       ),
     );

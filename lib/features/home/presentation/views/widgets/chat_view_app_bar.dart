@@ -15,12 +15,20 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
+      backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
       title: InkWell(
         onTap: () {
           GoRouter.of(context).push(AppRouters.kUserProfile, extra: chatUser);
         },
         child: Row(
           children: [
+            InkWell(
+              onTap: () => GoRouter.of(context).pop(),
+              child: Icon(
+                Icons.arrow_back,
+              ),
+            ),
             AvatarChat(
               user: chatUser,
               redius: 50,
@@ -41,8 +49,10 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                           lastActive: chatUser.lastActive!,
                         ),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: chatUser.isOnline! ? Colors.green : Colors.black54,
-                      fontSize: 12.sp),
+                        color:
+                            chatUser.isOnline! ? Colors.green : Colors.black54,
+                        fontSize: 12.sp,
+                      ),
                 ),
               ],
             ),

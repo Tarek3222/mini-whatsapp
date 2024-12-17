@@ -19,7 +19,7 @@ class SettingsViewAppBar extends StatelessWidget
       ),
       title: Text(
         'Settings',
-        style: Styles.textStyle24.copyWith(
+        style: Styles.textStyle24SemiBold(context).copyWith(
           fontWeight: FontWeight.w600,
         ),
       ),

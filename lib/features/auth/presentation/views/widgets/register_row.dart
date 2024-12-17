@@ -23,7 +23,7 @@ class RegisterRow extends StatelessWidget {
           },
           child: Text(
             'Register here',
-            style: Styles.textStyle15,
+            style: Styles.textStyle15SemiBold(context),
           ),
         ),
       ],

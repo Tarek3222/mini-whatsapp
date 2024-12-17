@@ -67,17 +67,13 @@ class ChatsTabBody extends StatelessWidget {
                           }
                         } else if (!snapshot.hasData) {
                           return const Center(
-                            child: Text('No Chats Available!, create one!'),
+                            child: Text('No Chats Available!'),
                           );
                         } else {
                           return const Center(
                             child: Text('No Chats Available!'),
                           );
                         }
-                      default:
-                        return const Center(
-                          child: Text('No Chats'),
-                        );
                     }
                   });
             } else if (snapshot.hasError) {
@@ -87,10 +83,6 @@ class ChatsTabBody extends StatelessWidget {
             } else {
               return CustomLoadingIndecator();
             }
-          default:
-            return const Center(
-              child: Text('No Chats'),
-            );
         }
       },
     );

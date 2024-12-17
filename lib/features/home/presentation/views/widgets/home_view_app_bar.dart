@@ -34,7 +34,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? buildTextField(context)
           : Text(
               'WhatsUp',
-              style: Styles.textStyle24.copyWith(
+              style: Styles.textStyle24SemiBold(context).copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -87,7 +87,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                     title: 'Logout',
                     dialogType: DialogType.warning,
                     btnOkOnPress: () async {
-                      UserServices().updateActiveStatus(isOnline: false);
+                      await UserServices().updateActiveStatus(isOnline: false);
                       await getIt<AuthServices>().logout();
                       GoRouter.of(context)
                           .pushReplacement(AppRouters.kLoginView);

@@ -13,45 +13,42 @@ class ChatMessegesStreamWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: MessegesServices().getAllMesseges(chatUser),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-              return CustomLoadingIndecator();
+      stream: MessegesServices().getAllMesseges(chatUser),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return CustomLoadingIndecator();
 
-            case ConnectionState.done:
-            case ConnectionState.active:
-              if (snapshot.hasData) {
-                var data = snapshot.data?.docs;
-                List<MessegeModel> messeges = data
-                        ?.map(
-                          (doc) => MessegeModel.fromJson(
-                              doc.data() as Map<String, dynamic>),
-                        )
-                        .toList() ??
-                    [];
-                if (messeges.isNotEmpty) {
-                  return BuildChatBubbleListView(
-                    user: chatUser,
-                    messeges: messeges,
-                    scrollController: scrollController,
-                  );
-                } else {
-                  return const Center(
-                    child: Text('Say Hello To Your Friend! 😍'),
-                  );
-                }
+          case ConnectionState.done:
+          case ConnectionState.active:
+            if (snapshot.hasData) {
+              var data = snapshot.data?.docs;
+              List<MessegeModel> messeges = data
+                      ?.map(
+                        (doc) => MessegeModel.fromJson(
+                            doc.data() as Map<String, dynamic>),
+                      )
+                      .toList() ??
+                  [];
+              if (messeges.isNotEmpty) {
+                return BuildChatBubbleListView(
+                  user: chatUser,
+                  messeges: messeges,
+                  scrollController: scrollController,
+                );
               } else {
                 return const Center(
-                  child: Text('No Messages Available!'),
+                  child: Text('Say Hello To Your Friend! 😍'),
                 );
               }
-            default:
+            } else {
               return const Center(
                 child: Text('No Messages Available!'),
               );
-          }
-        });
+            }
+        }
+      },
+    );
   }
 }

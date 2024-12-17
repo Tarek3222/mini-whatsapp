@@ -43,8 +43,7 @@ class _AddNewStatusAppBarState extends State<AddNewStatusAppBar> {
       backgroundColor: Colors.transparent,
       title: Text(
         'New Status',
-        style: Styles.textStyle24.copyWith(
-          fontWeight: FontWeight.w600,
+        style: Styles.textStyle24SemiBold(context).copyWith(
           color: Colors.white,
         ),
       ),
@@ -95,9 +94,8 @@ class _AddNewStatusAppBarState extends State<AddNewStatusAppBar> {
                 )
               : Text(
                   'Next',
-                  style: Styles.textStyle15.copyWith(
+                  style: Styles.textStyle15SemiBold(context).copyWith(
                     color: Colors.blue,
-                    fontWeight: FontWeight.w600,
                     fontSize: 17.sp,
                   ),
                 ),

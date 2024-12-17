@@ -21,7 +21,7 @@ class LoginRow extends StatelessWidget {
           },
           child: Text(
             'Login here',
-            style: Styles.textStyle15,
+            style: Styles.textStyle15SemiBold(context),
           ),
         ),
       ],

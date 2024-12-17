@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:clone_chat/core/constants/app_routers.dart';
 import 'package:clone_chat/core/models/chat_user.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';

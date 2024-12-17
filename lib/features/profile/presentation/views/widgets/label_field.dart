@@ -9,7 +9,7 @@ class LabelField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: Styles.textStyle15.copyWith(
+      style: Styles.textStyle15SemiBold(context).copyWith(
         color: Colors.grey,
       ),
     );

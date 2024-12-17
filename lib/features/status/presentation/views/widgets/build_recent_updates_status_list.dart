@@ -82,8 +82,6 @@ class BuildRecentUpdatesStatusList extends StatelessWidget {
                 child: Text('No Users Found'),
               );
             }
-          default:
-            return SizedBox();
         }
       },
     );

@@ -57,7 +57,7 @@ class MessegesServices {
   Future<void> sendMessage(ChatUser user, String msg, Type type) async {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
     final MessegeModel messege = MessegeModel(
-      fromId: AuthServices().auth.currentUser!.uid,
+      fromId: getIt.get<AuthServices>().auth.currentUser!.uid,
       message: msg,
       sent: time,
       read: '',
@@ -65,13 +65,16 @@ class MessegesServices {
       createdAt: DateTime.now(),
       toId: user.uid,
     );
-    await getIt.get<NotificationsServices>().sendNotifications(
-          fcmToken: user.pushToken!,
-          name: AuthServices().auth.currentUser!.displayName!,
-          message: msg,
-          userId: AuthServices().auth.currentUser!.uid,
-          type: type.name,
-        );
+    // await getIt.get<NotificationsServices>().sendNotifications(
+    //       fcmToken: user.pushToken!,
+    //       name: getIt.get<AuthServices>().auth.currentUser!.displayName!,
+    //       message: msg,
+    //       userId: getIt.get<AuthServices>().auth.currentUser!.uid,
+    //       type: type.name,
+    //     );
+    await getIt
+        .get<UserServices>()
+        .updateLastMessageTime(time: time, uid: user.uid!);
     return await firestore
         .collection(
             'chats/${MessegesServices.getConversationId(user.uid!)}/messeges/') //collection(chats).doc(conversationId).collection(messeges)

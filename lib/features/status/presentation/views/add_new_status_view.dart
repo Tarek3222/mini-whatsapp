@@ -110,7 +110,7 @@ class _AddNewStatusViewState extends State<AddNewStatusView> {
                     child: Center(
                       child: Text(
                         'Select Image or Video',
-                        style: Styles.textStyle24,
+                        style: Styles.textStyle24SemiBold(context),
                       ),
                     ),
                   ),

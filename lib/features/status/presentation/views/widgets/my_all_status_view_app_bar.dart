@@ -17,12 +17,7 @@ class MyAllStatusViewAppBar extends StatelessWidget
           color: Colors.grey,
         ),
       ),
-      title: Text(
-        'My Status',
-        style: Styles.textStyle24.copyWith(
-          fontWeight: FontWeight.w600,
-        ),
-      ),
+      title: Text('My Status', style: Styles.textStyle24SemiBold(context)),
     );
   }
 

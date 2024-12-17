@@ -86,7 +86,7 @@ class SettingsBody extends StatelessWidget {
           icon: Icons.logout,
           color: Colors.red,
           onTap: () async {
-            UserServices().updateActiveStatus(isOnline: false);
+            await UserServices().updateActiveStatus(isOnline: false);
             await getIt<AuthServices>().logout();
             Navigator.pop(context);
             GoRouter.of(context).pushReplacement(AppRouters.kLoginView);

@@ -73,7 +73,7 @@ class _ChangePasswordBottomSheetState extends State<ChangePasswordBottomSheet> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'New Password',
-                    style: Styles.textStyle24.copyWith(
+                    style: Styles.textStyle24SemiBold(context).copyWith(
                       fontWeight: FontWeight.w500,
                     ),
                   ),

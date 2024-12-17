@@ -44,14 +44,18 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_notification_channel: ^3.1.0
   flutter_screenutil: ^5.9.3
+  font_awesome_flutter: ^10.8.0
   gallery_saver_plus: ^3.2.1
   get_it: ^8.0.2
   go_router: ^14.2.8
   google_fonts: ^6.2.1
+  google_generative_ai: ^0.4.6
   googleapis_auth: ^1.6.0
   http: ^1.2.2
   image_picker: ^1.1.2
   insta_image_viewer: ^1.0.4
+  intl: ^0.20.1
+  lottie: ^3.3.0
   shared_preferences: ^2.3.3
   status_view: ^0.0.2
   story_view: ^0.16.5

@@ -28,7 +28,7 @@ class NewMessegeButton extends StatelessWidget {
     var dialog = AlertDialog(
       title: Text(
         'Create New Chat',
-        style: Styles.textStyle15,
+        style: Styles.textStyle15SemiBold(context),
       ),
       content: Form(
         key: formKey,
@@ -57,7 +57,7 @@ class NewMessegeButton extends StatelessWidget {
           },
           child: Text(
             'Cancel',
-            style: Styles.textStyle15.copyWith(
+            style: Styles.textStyle15SemiBold(context).copyWith(
               color: Colors.red,
             ),
           ),
@@ -81,7 +81,7 @@ class NewMessegeButton extends StatelessWidget {
           },
           child: Text(
             'add',
-            style: Styles.textStyle15,
+            style: Styles.textStyle15SemiBold(context),
           ),
         ),
       ],
@@ -89,7 +89,8 @@ class NewMessegeButton extends StatelessWidget {
 
     showDialog(
         barrierDismissible: false,
-        barrierColor: Colors.white.withOpacity(0.7),
+        barrierColor:
+            Colors.white.withValues(alpha: 0, red: 0, green: 0, blue: 0.5),
         context: context,
         builder: (BuildContext context) {
           return dialog;

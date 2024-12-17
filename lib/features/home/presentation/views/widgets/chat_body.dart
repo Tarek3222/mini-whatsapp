@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:clone_chat/core/models/chat_user.dart';
@@ -83,10 +82,6 @@ class _ChatBodyState extends State<ChatBody> {
                           child: Text('No Messages Available!'),
                         );
                       }
-                    default:
-                      return const Center(
-                        child: Text('No Messages Available!'),
-                      );
                   }
                 }),
           ),
@@ -102,7 +97,7 @@ class _ChatBodyState extends State<ChatBody> {
               ),
             ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 3),
+            padding: EdgeInsets.symmetric(vertical: 5),
             child: Row(
               children: [
                 Expanded(
@@ -203,7 +198,7 @@ class _ChatBodyState extends State<ChatBody> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () async {
+                  onPressed: () {
                     if (messageController.text.isNotEmpty) {
                       if (messeges.isEmpty) {
                         MessegesServices().sendFirstMessage(
@@ -212,7 +207,6 @@ class _ChatBodyState extends State<ChatBody> {
                           Type.text,
                         );
                       } else {
-                        log('message');
                         MessegesServices().sendMessage(
                           widget.chatUser,
                           messageController.text.trim(),

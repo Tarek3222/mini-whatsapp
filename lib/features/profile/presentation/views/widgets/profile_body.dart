@@ -171,7 +171,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             children: [
               Text(
                 'Pick Profile image',
-                style: Styles.textStyle24,
+                style: Styles.textStyle24SemiBold(context),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

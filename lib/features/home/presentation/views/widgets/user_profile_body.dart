@@ -53,7 +53,7 @@ class UserProfileBody extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
           user.name!,
-          style: Styles.textStyle24.copyWith(
+          style: Styles.textStyle24SemiBold(context).copyWith(
             fontWeight: FontWeight.w600,
             color: Colors.white,
           ),

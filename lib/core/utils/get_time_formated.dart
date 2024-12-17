@@ -6,11 +6,8 @@ String getReadAndSentTimeFormated(
   final DateTime now = DateTime.now();
   if (sent.year == now.year && sent.month == now.month && sent.day == now.day) {
     return TimeOfDay.fromDateTime(sent).format(context);
-  } else if (now.difference(sent).inDays == 1) {
-    return 'Yesterday\n${TimeOfDay.fromDateTime(sent).format(context)}';
-  } else {
-    return '${sent.day}/${sent.month}/${sent.year}\n${TimeOfDay.fromDateTime(sent).format(context)}';
   }
+  return '${sent.day}/${sent.month} at ${TimeOfDay.fromDateTime(sent).format(context)}';
 }
 
 String getLastMessageTime(

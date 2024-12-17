@@ -8,7 +8,6 @@ import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 
 class UserServices {
@@ -50,8 +49,18 @@ class UserServices {
 
   Stream<QuerySnapshot> getAllUsers({required List<String> usersId}) {
     return users
+        .orderBy(kLastMessageTime, descending: true)
         .where(kUidUser, whereIn: usersId.isEmpty ? [''] : usersId)
         .snapshots();
+  }
+
+  Future<void> updateLastMessageTime(
+      {required String time, required String uid}) async {
+    await users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .update({kLastMessageTime: time});
+
+    await users.doc(uid).update({kLastMessageTime: time});
   }
 
   Stream<DocumentSnapshot> getUserInfo(ChatUser user) {
@@ -118,7 +127,7 @@ class UserServices {
 
   Future<void> deleteStory({required Map<String, dynamic> story}) async {
     final refStorage = FirebaseStorage.instance.refFromURL(story['content']);
-    await refStorage.delete();
+    await refStorage.delete().catchError((e) {});
     return await users.doc(story['uid']).update({
       'stories': FieldValue.arrayRemove([story])
     });
@@ -156,7 +165,7 @@ class UserServices {
         DateTime.fromMillisecondsSinceEpoch(int.parse(story['time']));
     final DateTime now = DateTime.now();
     if (now.difference(uploadTime).inHours > 24) {
-      return await deleteStory(story: story);
+      return await deleteStory(story: story).catchError((e) {});
     }
   }
 

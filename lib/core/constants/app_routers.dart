@@ -5,6 +5,7 @@ import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/log
 import 'package:clone_chat/features/auth/presentation/view_model/register_cubit/register_cubit.dart';
 import 'package:clone_chat/features/auth/presentation/views/login_view.dart';
 import 'package:clone_chat/features/auth/presentation/views/signup_view.dart';
+import 'package:clone_chat/features/chat_with_ai/presentation/views/chat_ai_view.dart';
 import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/chat_view.dart';
 import 'package:clone_chat/features/home/presentation/views/home_view.dart';
@@ -32,6 +33,7 @@ abstract class AppRouters {
   static const String kMyAllStatusView = '/myAllStatusView';
   static const String kSingleStoryItemView = '/singleStoryItem';
   static const String kSettingsView = '/settingsView';
+  static const String kChatAiView = '/ChatAiView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -111,6 +113,12 @@ abstract class AppRouters {
         path: kMyAllStatusView,
         builder: (context, state) {
           return MyAllStatusView();
+        },
+      ),
+      GoRoute(
+        path: kChatAiView,
+        builder: (context, state) {
+          return ChatAiView();
         },
       ),
       GoRoute(

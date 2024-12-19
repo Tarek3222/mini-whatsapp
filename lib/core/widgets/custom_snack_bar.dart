@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 SnackBar customSnackBar({required String text}) {
   return SnackBar(
@@ -7,7 +8,7 @@ SnackBar customSnackBar({required String text}) {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 14.sp,
         ),
       ),
     ),
@@ -15,8 +16,7 @@ SnackBar customSnackBar({required String text}) {
     elevation: 0,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(8),
     ),
-    margin: const EdgeInsets.all(20),
   );
 }

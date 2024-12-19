@@ -46,16 +46,16 @@ class _ChatsViewState extends State<ChatsView> {
     return Stack(
       children: [
         const ChatsTabBody(),
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 200),
+          bottom: isAnimate ? 65 : 20,
+          right: 5,
+          child: ChatAiButton(),
+        ),
         Positioned(
           bottom: 20,
           right: 20,
           child: const NewMessegeButton(),
-        ),
-        AnimatedPositioned(
-          duration: const Duration(seconds: 2),
-          bottom: isAnimate ? 65 : 20,
-          right: 5,
-          child: ChatAiButton(),
         ),
       ],
     );

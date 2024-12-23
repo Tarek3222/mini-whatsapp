@@ -64,10 +64,6 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                 },
               ),
               PopupMenuItem(
-                child: Text('New Group'),
-                onTap: () {},
-              ),
-              PopupMenuItem(
                 child: Text('Settings'),
                 onTap: () {
                   GoRouter.of(context).push(AppRouters.kSettingsView);

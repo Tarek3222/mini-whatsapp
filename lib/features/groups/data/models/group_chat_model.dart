@@ -5,7 +5,7 @@ class GroupChatModel {
   String? description;
   String? adminId;
   DateTime? createdAt;
-
+  String? lastMessage;
   GroupChatModel({
     this.id,
     this.name,
@@ -13,6 +13,7 @@ class GroupChatModel {
     this.description,
     this.adminId,
     this.createdAt,
+    this.lastMessage,
   });
 
   GroupChatModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +23,7 @@ class GroupChatModel {
     description = json['description'] as String?;
     adminId = json['adminId'] as String?;
     createdAt = json['createdAt'] as DateTime?;
+    lastMessage = json['lastMessage'] as String?;
   }
 
   Map<String, dynamic> toJson() => {
@@ -31,5 +33,6 @@ class GroupChatModel {
         'description': description,
         'adminId': adminId,
         'createdAt': createdAt,
+        'lastMessage': lastMessage,
       };
 }

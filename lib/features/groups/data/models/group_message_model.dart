@@ -5,7 +5,13 @@ class GroupMessageModel {
   String? type;
   String? nameUser;
   String? imageUser;
-  GroupMessageModel({this.fromId, this.message, this.date, this.type});
+  GroupMessageModel(
+      {this.fromId,
+      this.message,
+      this.date,
+      this.type,
+      this.nameUser,
+      this.imageUser});
 
   GroupMessageModel.fromJson(Map<String, dynamic> json) {
     fromId = json['fromId'] as String?;

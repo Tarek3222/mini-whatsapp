@@ -1,3 +1,4 @@
+import 'package:clone_chat/core/constants/strings_constants.dart';
 import 'package:clone_chat/core/widgets/custom_chached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ class CustomBuildGroupItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CustomChachedNetworkImage(
-        imageUrl: 'https://cdn-icons-png.flaticon.com/512/681/681494.png',
+        imageUrl: kImageGroupDefault,
         height: 40.h,
       ),
       title: Text(

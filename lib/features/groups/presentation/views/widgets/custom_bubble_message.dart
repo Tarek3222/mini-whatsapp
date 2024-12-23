@@ -5,10 +5,8 @@ import 'package:clone_chat/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ChatWidgetBubble extends StatelessWidget {
-  const ChatWidgetBubble({super.key, required this.msg, required this.date});
-  final String msg;
-  final DateTime date;
+class CustomBubbleMessage extends StatelessWidget {
+  const CustomBubbleMessage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +29,17 @@ class ChatWidgetBubble extends StatelessWidget {
             crossAxisAlignment:
                 CrossAxisAlignment.end, // Align time to the right
             children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Tarek (You)⚡',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ),
               Text(
-                msg,
+                'Hello Tarek, how are you?',
                 style: Styles.font18SemiBold(context)
                     .copyWith(color: Colors.white),
                 textAlign: TextAlign.left,
@@ -41,9 +48,10 @@ class ChatWidgetBubble extends StatelessWidget {
                   height: 8), // Optional spacing between message and time
               Text(
                 DateFormat('HH:mm')
-                    .format(date), // Add leading zero for minutes
-                style: Styles.font14Medium(context)
-                    .copyWith(color: Colors.white.withOpacity(0.7)),
+                    .format(DateTime.now()), // Add leading zero for minutes
+                style: Styles.font14Medium(context).copyWith(
+                  color: Colors.white.withOpacity(0.7),
+                ),
               ),
             ],
           ),
@@ -53,11 +61,10 @@ class ChatWidgetBubble extends StatelessWidget {
   }
 }
 
-class ChatWidgetBubblefriend extends StatelessWidget {
-  const ChatWidgetBubblefriend(
-      {super.key, required this.msg, required this.date});
-  final String msg;
-  final DateTime date;
+class CustomBubbleMessagefriend extends StatelessWidget {
+  const CustomBubbleMessagefriend({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -79,15 +86,24 @@ class ChatWidgetBubblefriend extends StatelessWidget {
             crossAxisAlignment:
                 CrossAxisAlignment.start, // Align time to the right
             children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Tarek⚡',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ),
               Text(
-                msg,
+                'Hello Tarek, how are you?',
                 style: Styles.font18SemiBold(context)
                     .copyWith(color: Colors.white),
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 8),
               Text(
-                DateFormat('HH:mm').format(date),
+                DateFormat('HH:mm').format(DateTime.now()),
                 style: Styles.font14Medium(context)
                     .copyWith(color: Colors.white.withOpacity(0.7)),
               ),

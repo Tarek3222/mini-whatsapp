@@ -125,11 +125,17 @@ class _ProfileBodyState extends State<ProfileBody> {
                             uid: userModel.uid,
                             about: aboutMeController.text,
                           );
-                          getIt
+                          await getIt
                               .get<AuthServices>()
                               .auth
                               .currentUser!
                               .updateDisplayName(nameController.text);
+                          await getIt
+                              .get<AuthServices>()
+                              .auth
+                              .currentUser!
+                              .updatePhotoURL(
+                                  selectedImage ?? userModel.image.toString());
                           await UserServices().updateUser(user: user);
                           showSnackBar(context, message: 'Profile updated');
                           Navigator.pop(context);

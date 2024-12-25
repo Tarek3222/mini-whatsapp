@@ -1,5 +1,6 @@
 import 'package:clone_chat/core/constants/strings_constants.dart';
 import 'package:clone_chat/core/themes/styles.dart';
+import 'package:clone_chat/core/utils/get_time_formated.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/widgets/custom_chached_network_image.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
@@ -33,6 +34,12 @@ class CustomBuildGroupItem extends StatelessWidget {
         style: TextStyle(fontWeight: FontWeight.w700, color: Colors.grey),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
+      ),
+      trailing: Text(
+        getLastMessageTime(
+          context: context,
+          time: group.lastMessageTime ?? '0',
+        ),
       ),
     );
   }

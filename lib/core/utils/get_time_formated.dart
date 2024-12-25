@@ -12,6 +12,8 @@ String getReadAndSentTimeFormated(
 
 String getLastMessageTime(
     {required BuildContext context, required String time}) {
+  int active = int.tryParse(time) ?? -1;
+  if (active == -1) return '';
   final DateTime sent = DateTime.fromMillisecondsSinceEpoch(int.parse(time));
   final DateTime now = DateTime.now();
   if (sent.year == now.year && sent.month == now.month && sent.day == now.day) {

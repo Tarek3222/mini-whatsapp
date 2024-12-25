@@ -1,7 +1,7 @@
 class GroupMessageModel {
   String? fromId;
   String? message;
-  DateTime? date;
+  String? date;
   String? type;
   String? nameUser;
   String? imageUser;
@@ -16,7 +16,7 @@ class GroupMessageModel {
   GroupMessageModel.fromJson(Map<String, dynamic> json) {
     fromId = json['fromId'] as String?;
     message = json['message'] as String?;
-    date = json['date'] as DateTime?;
+    date = json['date'] as String?;
     type = json['type'] as String?;
     nameUser = json['nameUser'] as String?;
     imageUser = json['imageUser'] as String?;

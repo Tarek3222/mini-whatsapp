@@ -50,3 +50,10 @@ String getTimeStoryFormated(
     return 'Yesterday ${TimeOfDay.fromDateTime(sent).format(context)}';
   }
 }
+
+String getTimeMessageGroupFormated(
+    {required BuildContext context, required String time}) {
+  final DateTime sent = DateTime.fromMillisecondsSinceEpoch(int.parse(time));
+
+  return TimeOfDay.fromDateTime(sent).format(context);
+}

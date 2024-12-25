@@ -2,12 +2,14 @@
 
 import 'package:clone_chat/core/themes/app_colors.dart';
 import 'package:clone_chat/core/themes/styles.dart';
+import 'package:clone_chat/core/utils/get_time_formated.dart';
+import 'package:clone_chat/features/groups/data/models/group_message_model.dart';
+import 'package:clone_chat/features/home/presentation/views/widgets/custom_build_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class CustomBubbleMessage extends StatelessWidget {
-  const CustomBubbleMessage({super.key});
-
+  const CustomBubbleMessage({super.key, required this.message});
+  final GroupMessageModel message;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -24,33 +26,32 @@ class CustomBubbleMessage extends StatelessWidget {
           ),
         ),
         child: IntrinsicWidth(
-          // Ensures the container only takes the width of its content
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.end, // Align time to the right
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Tarek (You)⚡',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.8),
-                  ),
+              Text(
+                '${message.nameUser ?? 'unknown'} (You)⚡',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
                 ),
               ),
-              Text(
-                'Hello Tarek, how are you?',
-                style: Styles.font18SemiBold(context)
-                    .copyWith(color: Colors.white),
-                textAlign: TextAlign.left,
-              ),
+              message.type == 'image'
+                  ? CustomBuildNetworkImage(messegeUrl: message.message!)
+                  : Text(
+                      '${message.message}',
+                      style: Styles.font18SemiBold(context)
+                          .copyWith(color: Colors.white),
+                    ),
               const SizedBox(
                   height: 8), // Optional spacing between message and time
-              Text(
-                DateFormat('HH:mm')
-                    .format(DateTime.now()), // Add leading zero for minutes
-                style: Styles.font14Medium(context).copyWith(
-                  color: Colors.white.withOpacity(0.7),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  getTimeMessageGroupFormated(
+                      context: context, time: message.date!),
+                  style: Styles.font14Medium(context).copyWith(
+                    color: Colors.white.withOpacity(0.7),
+                  ),
                 ),
               ),
             ],
@@ -64,8 +65,9 @@ class CustomBubbleMessage extends StatelessWidget {
 class CustomBubbleMessagefriend extends StatelessWidget {
   const CustomBubbleMessagefriend({
     super.key,
+    required this.message,
   });
-
+  final GroupMessageModel message;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -86,26 +88,29 @@ class CustomBubbleMessagefriend extends StatelessWidget {
             crossAxisAlignment:
                 CrossAxisAlignment.start, // Align time to the right
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Tarek⚡',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.8),
-                  ),
+              Text(
+                '${message.nameUser ?? 'unknown'}⚡',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
                 ),
               ),
-              Text(
-                'Hello Tarek, how are you?',
-                style: Styles.font18SemiBold(context)
-                    .copyWith(color: Colors.white),
-                textAlign: TextAlign.left,
-              ),
+              message.type == 'image'
+                  ? CustomBuildNetworkImage(messegeUrl: message.message!)
+                  : Text(
+                      '${message.message}',
+                      style: Styles.font18SemiBold(context)
+                          .copyWith(color: Colors.white),
+                      textAlign: TextAlign.left,
+                    ),
               const SizedBox(height: 8),
-              Text(
-                DateFormat('HH:mm').format(DateTime.now()),
-                style: Styles.font14Medium(context)
-                    .copyWith(color: Colors.white.withOpacity(0.7)),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  getTimeMessageGroupFormated(
+                      context: context, time: message.date!),
+                  style: Styles.font14Medium(context)
+                      .copyWith(color: Colors.white.withOpacity(0.7)),
+                ),
               ),
             ],
           ),

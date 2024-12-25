@@ -1,4 +1,4 @@
-import 'package:clone_chat/features/groups/presentation/views/widgets/build_list_chats_group.dart';
+import 'package:clone_chat/features/groups/presentation/views/widgets/build_stream_groups.dart';
 import 'package:clone_chat/features/groups/presentation/views/widgets/custom_button_new_group.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class GroupBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BuildListChatsGroup(),
+        BuildStreamGroups(),
         Positioned(
           bottom: 20,
           right: 20,

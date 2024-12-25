@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-SnackBar customSnackBar({required String text}) {
+SnackBar customSnackBar({required String text, EdgeInsetsGeometry? margin}) {
   return SnackBar(
     content: FittedBox(
       fit: BoxFit.scaleDown,
@@ -12,8 +12,11 @@ SnackBar customSnackBar({required String text}) {
         ),
       ),
     ),
+    margin: margin,
     duration: const Duration(seconds: 3),
     elevation: 0,
+    showCloseIcon: true,
+    dismissDirection: DismissDirection.horizontal,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),

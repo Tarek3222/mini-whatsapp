@@ -31,10 +31,11 @@ class GroupsServices {
       id: time,
       name: nameGroup,
       description: descGroup,
-      createdAt: DateTime.now(),
+      createdAt: time,
       adminId: getIt.get<AuthServices>().auth.currentUser!.uid,
       image: file != null ? imageUrl : kImageGroupDefault,
       lastMessage: '',
+      lastMessageTime: '',
     );
 
     return await groupsCollection.doc(time).set(groupChatModel.toJson());
@@ -42,5 +43,21 @@ class GroupsServices {
 
   Stream<QuerySnapshot> getAllGroups() {
     return groupsCollection.snapshots();
+  }
+
+  Future<void> updateLastMessage({
+    required String groupId,
+    required String msg,
+    required String lastUserSentMessage,
+    required String lastUserId,
+  }) async {
+    return await groupsCollection.doc(groupId).update(
+      {
+        'lastMessage': msg,
+        'lastMessageTime': DateTime.now().millisecondsSinceEpoch.toString(),
+        'lastUserSentMessage': lastUserSentMessage,
+        'lastUserId': lastUserId,
+      },
+    );
   }
 }

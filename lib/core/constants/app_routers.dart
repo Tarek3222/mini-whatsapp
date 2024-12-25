@@ -6,6 +6,7 @@ import 'package:clone_chat/features/auth/presentation/view_model/register_cubit/
 import 'package:clone_chat/features/auth/presentation/views/login_view.dart';
 import 'package:clone_chat/features/auth/presentation/views/signup_view.dart';
 import 'package:clone_chat/features/chat_with_ai/presentation/views/chat_ai_view.dart';
+import 'package:clone_chat/features/groups/data/models/group_chat_model.dart';
 import 'package:clone_chat/features/groups/presentation/views/group_chat_view.dart';
 import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/chat_view.dart';
@@ -100,7 +101,9 @@ abstract class AppRouters {
       GoRoute(
         path: kGroupChatView,
         builder: (context, state) {
-          return const GroupChatView();
+          return GroupChatView(
+            group: state.extra as GroupChatModel,
+          );
         },
       ),
       GoRoute(

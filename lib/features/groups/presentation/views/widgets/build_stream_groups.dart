@@ -33,14 +33,29 @@ class BuildStreamGroups extends StatelessWidget {
                 );
               } else {
                 return Center(
-                  child: Text('No groups yet, create one!'),
+                  child: Text(
+                    'No groups yet, create one!',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                 );
               }
             } else if (snapshot.hasError) {
-              return Text('some thing went wrong');
+              return Text(
+                'some thing went wrong',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              );
             } else {
               return Center(
-                child: Text('No groups yet, create one!'),
+                child: Text(
+                  'No groups yet, create one!',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
               );
             }
         }

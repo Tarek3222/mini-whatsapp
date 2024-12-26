@@ -23,6 +23,7 @@ class AppThemes {
           color: Colors.grey,
         ),
       ),
+      iconTheme: IconThemeData(color: Colors.black),
     ),
     textTheme: GoogleFonts.interTextTheme(),
     scaffoldBackgroundColor: Colors.white,
@@ -35,10 +36,10 @@ class AppThemes {
       secondary: Colors.white,
       onSecondary: Colors.black54,
       onPrimaryContainer: AppColors.primaryColor,
-      onPrimary: Colors.white,
+      onPrimary: Colors.grey[900],
       onError: Colors.red,
     ),
-    scaffoldBackgroundColor: Colors.black45,
+    scaffoldBackgroundColor: Colors.grey[900],
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -49,6 +50,7 @@ class AppThemes {
           color: Colors.grey,
         ),
       ),
+      iconTheme: IconThemeData(color: Colors.white),
     ),
     textTheme: GoogleFonts.interTextTheme(),
   );

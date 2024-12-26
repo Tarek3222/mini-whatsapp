@@ -9,8 +9,8 @@ class FieldWithShadow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
-      elevation: 30,
+      color: Theme.of(context).colorScheme.secondary,
+      elevation: 5,
       shadowColor: Colors.white.withOpacity(0.7),
       borderRadius: BorderRadius.circular(30),
       child: child,

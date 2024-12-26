@@ -21,16 +21,29 @@ class UserProfileBody extends StatelessWidget {
                 children: [
                   ListTile(
                     leading: Icon(Icons.email, color: Colors.green.shade600),
-                    title: Text(user.email!),
+                    title: Text(
+                      user.email!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
                   ),
                   ListTile(
                     leading: Icon(Icons.phone, color: Colors.green.shade600),
-                    title: Text(user.phone ?? 'number not found'),
+                    title: Text(
+                      user.phone ?? 'number not found',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
                   ),
                   ListTile(
                     leading: Icon(Icons.info, color: Colors.green.shade600),
                     title: Text(
                       user.about ?? "Here there, i'm using clone chat",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                     ),
                   ),
                 ],

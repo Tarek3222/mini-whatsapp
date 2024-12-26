@@ -10,6 +10,8 @@ class NameField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FieldWithShadow(
       child: defaultText(
+        context: context,
+        color: Theme.of(context).colorScheme.onSecondary,
         type: TextInputType.text,
         controller: nameController,
         hint: 'Enter your name',

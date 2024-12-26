@@ -84,6 +84,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                   if (isUploading) const CustomLoadingIndecator(),
                   Text(
                     userModel.email.toString(),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                   ),
                   const Divider(
                     height: 50,
@@ -177,7 +180,9 @@ class _ProfileBodyState extends State<ProfileBody> {
             children: [
               Text(
                 'Pick Profile image',
-                style: Styles.textStyle24SemiBold(context),
+                style: Styles.textStyle24SemiBold(context).copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

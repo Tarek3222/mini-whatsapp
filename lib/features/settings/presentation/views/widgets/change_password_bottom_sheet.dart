@@ -34,7 +34,7 @@ class _ChangePasswordBottomSheetState extends State<ChangePasswordBottomSheet> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.onSecondary,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12),

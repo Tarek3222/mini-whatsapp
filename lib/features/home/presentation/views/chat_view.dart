@@ -11,7 +11,6 @@ class ChatView extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: ChatViewAppBar(
           chatUser: chatUser,
         ),

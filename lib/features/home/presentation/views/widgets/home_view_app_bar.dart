@@ -22,14 +22,6 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      scrolledUnderElevation: 0,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          width: 0.5,
-          color: Colors.grey,
-        ),
-      ),
       title: isSearching
           ? buildTextField(context)
           : Text(
@@ -107,11 +99,14 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: 'Search for a chat',
-        hintStyle: TextStyle(letterSpacing: 1.2),
+        hintStyle: TextStyle(letterSpacing: 1.2, color: Colors.grey),
         border: InputBorder.none,
       ),
       autofocus: true,
-      style: TextStyle(letterSpacing: 1.2),
+      style: TextStyle(
+        letterSpacing: 1.2,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
       onChanged: (value) {
         if (value.isNotEmpty) {
           BlocProvider.of<SearchCubit>(context).searchUser(value);

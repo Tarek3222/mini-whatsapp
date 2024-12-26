@@ -1,50 +1,49 @@
-import 'package:clone_chat/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class Styles {
   static TextStyle textStyle24SemiBold(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 24),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.w600,
       );
   static TextStyle textStyle15SemiBold(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 15),
-        color: AppColors.primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         fontWeight: FontWeight.w600,
       );
 
   static TextStyle font18SemiBold(BuildContext context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 18),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.w600);
   }
 
   static TextStyle font14Medium(BuildContext context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 14),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.w500);
   }
 
   static TextStyle font14Bold(BuildContext context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 14),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.bold);
   }
 
   static TextStyle font18Medium(BuildContext context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 18),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.w500);
   }
 
   static TextStyle font22Bold(BuildContext context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 22),
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.secondary,
         fontWeight: FontWeight.bold);
   }
 }

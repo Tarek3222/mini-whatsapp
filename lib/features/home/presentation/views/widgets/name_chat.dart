@@ -12,6 +12,7 @@ class NameChat extends StatelessWidget {
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18.sp,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       overflow: TextOverflow.ellipsis,
     );

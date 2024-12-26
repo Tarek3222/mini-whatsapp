@@ -10,7 +10,9 @@ class AboutMeField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FieldWithShadow(
       child: defaultText(
+        context: context,
         type: TextInputType.text,
+        color: Theme.of(context).colorScheme.onSecondary,
         controller: aboutMeController,
         hint: 'Enter your about me',
         validate: (value) {

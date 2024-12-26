@@ -37,14 +37,29 @@ class BuildStreamGroupChat extends StatelessWidget {
                 );
               } else {
                 return Center(
-                  child: Text('Start a conversation! 😍'),
+                  child: Text(
+                    'Start a conversation! 😍',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                 );
               }
             } else if (snapshot.hasError) {
-              return Text('some thing went wrong');
+              return Text(
+                'some thing went wrong',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              );
             } else {
               return Center(
-                child: Text('Start a conversation! 😍'),
+                child: Text(
+                  'Start a conversation! 😍',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
               );
             }
         }

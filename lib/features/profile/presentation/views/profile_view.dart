@@ -11,7 +11,6 @@ class ProfileView extends StatelessWidget {
       onTap: () =>
           FocusManager.instance.primaryFocus?.unfocus(), //hide keyboard
       child: const Scaffold(
-        backgroundColor: Colors.white,
         appBar: ProfileViewAppBar(),
         body: ProfileBody(),
       ),

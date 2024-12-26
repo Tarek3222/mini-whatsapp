@@ -8,6 +8,7 @@ class PhoneField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return defaultText(
+      context: context,
       type: TextInputType.phone,
       label: 'Phone Number',
       hint: 'Enter your phone number',

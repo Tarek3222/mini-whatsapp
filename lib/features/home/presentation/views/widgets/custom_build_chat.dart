@@ -37,6 +37,7 @@ class CustomBuildChat extends StatelessWidget {
                     : messeges[0].message!
                 : chatUser.about ?? '',
             overflow: TextOverflow.ellipsis,
+            style: const TextStyle(color: Colors.grey),
             maxLines: 1,
           ),
           trailing: DetailsOfUnreadLastMessage(

@@ -21,6 +21,7 @@ class ChangePasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return defaultText(
+      context: context,
       type: TextInputType.visiblePassword,
       label: label,
       hint: hint,

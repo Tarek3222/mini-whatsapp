@@ -50,7 +50,7 @@ class _GroupChatBodyState extends State<GroupChatBody> {
           ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8),
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: Row(
             children: [
               Expanded(
@@ -105,7 +105,7 @@ class _GroupChatBodyState extends State<GroupChatBody> {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.send),
+                icon: const Icon(Icons.send, color: AppColors.primaryColor),
                 onPressed: () {
                   if (messageController.text.isNotEmpty) {
                     getIt

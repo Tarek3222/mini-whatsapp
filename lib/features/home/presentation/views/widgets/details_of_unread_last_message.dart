@@ -19,6 +19,9 @@ class DetailsOfUnreadLastMessage extends StatelessWidget {
           messege!.sent != null
               ? getLastMessageTime(context: context, time: messege!.sent!)
               : '',
+          style: TextStyle(
+            color: Colors.grey,
+          ),
         ),
         SizedBox(
           height: 5,

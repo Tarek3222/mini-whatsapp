@@ -9,13 +9,8 @@ class SettingsViewAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      scrolledUnderElevation: 0,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          width: 0.5,
-          color: Colors.grey,
-        ),
+      leading: BackButton(
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         'Settings',

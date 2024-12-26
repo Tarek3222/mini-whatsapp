@@ -12,7 +12,7 @@ class HomeBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       index: selectedIndex,
       onTap: onTap,
       buttonBackgroundColor: AppColors.primaryColor,

@@ -40,6 +40,9 @@ class CustomBuildGroupItem extends StatelessWidget {
           context: context,
           time: group.lastMessageTime ?? '0',
         ),
+        style: TextStyle(color: Colors.grey),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }

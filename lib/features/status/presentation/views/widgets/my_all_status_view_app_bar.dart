@@ -9,14 +9,6 @@ class MyAllStatusViewAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      scrolledUnderElevation: 0,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          width: 0.5,
-          color: Colors.grey,
-        ),
-      ),
       title: Text('My Status', style: Styles.textStyle24SemiBold(context)),
     );
   }

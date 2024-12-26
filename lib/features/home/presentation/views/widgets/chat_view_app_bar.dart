@@ -13,9 +13,6 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       title: InkWell(
         onTap: () {
@@ -49,8 +46,9 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                           lastActive: chatUser.lastActive!,
                         ),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color:
-                            chatUser.isOnline! ? Colors.green : Colors.black54,
+                        color: chatUser.isOnline!
+                            ? Colors.green
+                            : Theme.of(context).colorScheme.secondary,
                         fontSize: 12.sp,
                       ),
                 ),

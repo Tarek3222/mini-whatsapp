@@ -7,10 +7,13 @@ import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_cubit.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_state.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/change_password_bottom_sheet.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/custom_list_tile.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/custom_list_tile_with_tralling.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -21,11 +24,18 @@ class SettingsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomListTileWithTralling(
-          icon: Icons.dark_mode,
-          title: 'Dark Mode',
-          switchValue: true,
-          onChanged: (value) {},
+        BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
+          builder: (context, state) {
+            return CustomListTileWithTralling(
+              icon: Icons.dark_mode,
+              title: 'Dark Mode',
+              switchValue:
+                  BlocProvider.of<ChangeThemeCubit>(context).isDarkMode,
+              onChanged: (value) {
+                BlocProvider.of<ChangeThemeCubit>(context).changeTheme();
+              },
+            );
+          },
         ),
         CustomListTileWithTralling(
           icon: Icons.notifications,

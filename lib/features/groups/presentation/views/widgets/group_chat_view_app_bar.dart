@@ -13,14 +13,6 @@ class GroupChatViewAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      scrolledUnderElevation: 0,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          width: 0.5,
-          color: Colors.grey,
-        ),
-      ),
       title: Row(
         children: [
           InkWell(

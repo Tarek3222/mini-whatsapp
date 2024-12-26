@@ -38,13 +38,23 @@ class ChatMessegesStreamWidget extends StatelessWidget {
                   scrollController: scrollController,
                 );
               } else {
-                return const Center(
-                  child: Text('Say Hello To Your Friend! 😍'),
+                return Center(
+                  child: Text(
+                    'Say Hello To Your Friend! 😍',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                 );
               }
             } else {
-              return const Center(
-                child: Text('No Messages Available!'),
+              return Center(
+                child: Text(
+                  'No Messages Available!',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
               );
             }
         }

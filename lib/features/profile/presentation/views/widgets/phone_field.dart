@@ -10,7 +10,9 @@ class PhoneField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FieldWithShadow(
       child: defaultText(
+          context: context,
           type: TextInputType.phone,
+          color: Theme.of(context).colorScheme.onSecondary,
           controller: phoneController,
           hint: 'Enter your phone number',
           validate: (value) {

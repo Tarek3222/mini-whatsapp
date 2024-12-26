@@ -1,4 +1,4 @@
-import 'package:clone_chat/core/themes/app_colors.dart';
+import 'package:clone_chat/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomListTileWithTralling extends StatelessWidget {
@@ -18,18 +18,16 @@ class CustomListTileWithTralling extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: Colors.black54,
-        size: 35,
+        color: Theme.of(context).colorScheme.secondary,
+        size: 30,
       ),
       title: Text(
         title,
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-        ),
+        style: Styles.font22Bold(context),
       ),
       trailing: Switch(
         value: switchValue,
-        activeColor: AppColors.primaryColor,
+        activeColor: Theme.of(context).colorScheme.primary,
         inactiveTrackColor: Colors.grey,
         onChanged: onChanged,
       ),

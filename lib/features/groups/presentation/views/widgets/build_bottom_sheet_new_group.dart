@@ -34,7 +34,7 @@ class _BuildBottomSheetNewGroupState extends State<BuildBottomSheetNewGroup> {
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
       height: 300.h,
       decoration: BoxDecoration(
-        color: Colors.grey.shade400,
+        color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -111,6 +111,9 @@ class _BuildBottomSheetNewGroupState extends State<BuildBottomSheetNewGroup> {
                   Expanded(
                     child: TextFormField(
                       controller: groupNameController,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Enter Group Name';
@@ -122,6 +125,9 @@ class _BuildBottomSheetNewGroupState extends State<BuildBottomSheetNewGroup> {
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         hintText: 'Group Name',
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ),
@@ -131,6 +137,9 @@ class _BuildBottomSheetNewGroupState extends State<BuildBottomSheetNewGroup> {
               TextFormField(
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
                 controller: groupDescriptionController,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -139,6 +148,7 @@ class _BuildBottomSheetNewGroupState extends State<BuildBottomSheetNewGroup> {
                   return null;
                 },
                 decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.r),
                   ),

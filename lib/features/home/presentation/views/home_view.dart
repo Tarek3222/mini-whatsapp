@@ -41,7 +41,6 @@ class _HomeViewState extends State<HomeView> {
           }
         },
         child: Scaffold(
-          backgroundColor: Colors.white,
           appBar: HomeViewAppBar(
             isSearching: isSearching,
             onSearchPressed: () {

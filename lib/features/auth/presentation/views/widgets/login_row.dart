@@ -13,6 +13,7 @@ class LoginRow extends StatelessWidget {
           'Already have an account?',
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            color: Colors.grey,
           ),
         ),
         TextButton(

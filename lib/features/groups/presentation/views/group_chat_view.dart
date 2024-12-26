@@ -9,7 +9,6 @@ class GroupChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: GroupChatViewAppBar(
         group: group,
       ),

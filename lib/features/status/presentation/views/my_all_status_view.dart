@@ -9,7 +9,6 @@ class MyAllStatusView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: MyAllStatusViewAppBar(),
       body: MyAllStatusBody(),
     );

@@ -1,15 +1,18 @@
 import 'dart:developer';
 
 import 'package:clone_chat/core/constants/app_routers.dart';
+import 'package:clone_chat/core/themes/app_theme.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_cubit.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_state.dart';
 import 'package:clone_chat/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:flutter_notification_channel/notification_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,21 +31,29 @@ class MiniChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MaterialApp.router(
-            routerConfig: AppRouters.router,
-            debugShowCheckedModeBanner: false,
-            title: 'Mini Chat',
-            theme: ThemeData(
-              textTheme: GoogleFonts.interTextTheme(),
-              useMaterial3: true,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-            ),
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return BlocProvider(
+          create: (context) => ChangeThemeCubit()..init(),
+          child: Builder(builder: (context) {
+            return BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
+              builder: (context, state) {
+                return MaterialApp.router(
+                  routerConfig: AppRouters.router,
+                  debugShowCheckedModeBanner: false,
+                  title: 'Mini Chat',
+                  theme: BlocProvider.of<ChangeThemeCubit>(context).isDarkMode
+                      ? AppThemes.darkTheme
+                      : AppThemes.lightTheme,
+                );
+              },
+            );
+          }),
+        );
+      },
+    );
   }
 }
 

@@ -71,10 +71,12 @@ class NewMessegeButton extends StatelessWidget {
                   .then((value) {
                 if (!value) {
                   Navigator.pop(context);
-                  showSnackBar(context, message: 'user not exists');
+                  showSnackBar(context,
+                      message: 'user not exists', color: Colors.red);
                 } else {
                   Navigator.pop(context);
-                  showSnackBar(context, message: 'user added');
+                  showSnackBar(context,
+                      message: 'user added', color: Colors.green);
                 }
               });
             }

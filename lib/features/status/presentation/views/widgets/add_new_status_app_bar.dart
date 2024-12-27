@@ -64,7 +64,8 @@ class _AddNewStatusAppBarState extends State<AddNewStatusAppBar> {
                 setState(() {
                   isLoading = false;
                 });
-                showSnackBar(context, message: 'Status added successfully');
+                showSnackBar(context,
+                    message: 'Status added successfully', color: Colors.green);
                 Navigator.pop(context);
               } catch (e) {
                 showAwsomeDialog(

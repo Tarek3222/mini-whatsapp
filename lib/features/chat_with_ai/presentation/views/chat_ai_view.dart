@@ -72,7 +72,6 @@ class _UsersChatAiViewState extends State<ChatAiView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ChatAiViewAppBar(),
-      backgroundColor: const Color(0xffffffff),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -87,7 +86,6 @@ class _UsersChatAiViewState extends State<ChatAiView> {
             ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              color: Colors.white,
               child: Row(
                 children: [
                   Expanded(

@@ -9,9 +9,6 @@ class ChatAiViewAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      scrolledUnderElevation: 0,
-      elevation: 0,
       leading: BackButton(
         color: AppColors.primaryColor,
       ),
@@ -20,12 +17,6 @@ class ChatAiViewAppBar extends StatelessWidget implements PreferredSizeWidget {
         'Chat With Gemini',
         style:
             Styles.font22Bold(context).copyWith(color: AppColors.primaryColor),
-      ),
-      shape: const RoundedRectangleBorder(
-        side: BorderSide(
-          width: 0.5,
-          color: Colors.grey,
-        ),
       ),
     );
   }

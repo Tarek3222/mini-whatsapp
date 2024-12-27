@@ -133,13 +133,16 @@ class _ChangePasswordBottomSheetState extends State<ChangePasswordBottomSheet> {
                                     'password', newPasswordController.text);
                                 Navigator.pop(context);
                                 showSnackBar(context,
-                                    message: 'Password changed successfully');
+                                    message: 'Password changed successfully',
+                                    color: Colors.green);
                               } else {
                                 showSnackBar(context,
-                                    message: 'Password does not match');
+                                    message: 'Password does not match',
+                                    color: Colors.red);
                               }
                             } catch (e) {
-                              showSnackBar(context, message: e.toString());
+                              showSnackBar(context,
+                                  message: e.toString(), color: Colors.red);
                             }
                           } else {
                             setState(() {

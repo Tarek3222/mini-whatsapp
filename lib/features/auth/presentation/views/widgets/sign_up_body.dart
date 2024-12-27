@@ -41,7 +41,7 @@ class _SignUpBodyState extends State<SignUpBody> {
             Navigator.pop(context);
           }
         } else if (state is RegisterFailure) {
-          showSnackBar(context, message: state.message);
+          showSnackBar(context, message: state.message, color: Colors.red);
         }
       },
       builder: (context, state) {
@@ -98,15 +98,18 @@ class _SignUpBodyState extends State<SignUpBody> {
                               if (formKey.currentState!.validate()) {
                                 if (!emailController.text.contains('@')) {
                                   showSnackBar(context,
-                                      message: 'Please enter a valid email');
+                                      message: 'Please enter a valid email',
+                                      color: Colors.red);
                                 } else if (phoneController.text.length < 11) {
                                   showSnackBar(context,
                                       message:
-                                          'Please enter a valid phone number');
+                                          'Please enter a valid phone number',
+                                      color: Colors.red);
                                 } else if (passwordController.text.length < 8) {
                                   showSnackBar(context,
                                       message:
-                                          'Password must be at least 8 characters');
+                                          'Password must be at least 8 characters',
+                                      color: Colors.red);
                                 } else {
                                   BlocProvider.of<RegisterCubit>(context)
                                       .registerUser(

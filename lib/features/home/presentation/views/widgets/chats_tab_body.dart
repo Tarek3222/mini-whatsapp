@@ -4,6 +4,7 @@ import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:clone_chat/core/widgets/custom_loading_indecator.dart';
 import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/build_chats_list_view.dart';
+import 'package:clone_chat/features/home/presentation/views/widgets/build_loading_chtats_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class ChatsTabBody extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
           case ConnectionState.waiting:
-            return CustomLoadingIndecator();
+            return BuildLoadingChtatsList();
 
           case ConnectionState.done:
           case ConnectionState.active:
@@ -33,7 +34,7 @@ class ChatsTabBody extends StatelessWidget {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
                       case ConnectionState.waiting:
-                        return CustomLoadingIndecator();
+                        return BuildLoadingChtatsList();
 
                       case ConnectionState.done:
                       case ConnectionState.active:
@@ -61,8 +62,14 @@ class ChatsTabBody extends StatelessWidget {
                               },
                             );
                           } else {
-                            return const Center(
-                              child: Text('No Chats Available!'),
+                            return Center(
+                              child: Text(
+                                'No Chats found, Add some friends!',
+                                style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
                             );
                           }
                         } else if (!snapshot.hasData) {

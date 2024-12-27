@@ -62,9 +62,11 @@ class BuildCustomMyStatusItem extends StatelessWidget {
       btnOkOnPress: () async {
         try {
           await getIt<UserServices>().deleteStory(story: story);
-          showSnackBar(context, message: 'Story deleted successfully');
+          showSnackBar(context,
+              message: 'Story deleted successfully', color: Colors.green);
         } catch (e) {
-          showSnackBar(context, message: 'Something went wrong');
+          showSnackBar(context,
+              message: 'Something went wrong', color: Colors.red);
         }
       },
       btnCancelOnPress: () {},

@@ -30,8 +30,9 @@ class AvatarStatus extends StatelessWidget {
         indexOfSeenStatus: numberOfShownStories,
         numberOfStatus: stories.length,
         padding: 4,
-        centerImageUrl:
-            user != null ? user!.image! : 'https://i.pravatar.cc/300',
+        centerImageUrl: user != null
+            ? user!.image!
+            : 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png',
         seenColor: Colors.grey,
         unSeenColor: AppColors.primaryColor,
       ),

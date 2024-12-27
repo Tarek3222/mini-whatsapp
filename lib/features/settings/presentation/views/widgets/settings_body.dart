@@ -119,7 +119,8 @@ class SettingsBody extends StatelessWidget {
                   GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
                 } catch (e) {
                   showSnackBar(context,
-                      message: 'something went wrong, try again!');
+                      message: 'something went wrong, try again!',
+                      color: Colors.red);
                 }
               },
               btnCancelOnPress: () {},

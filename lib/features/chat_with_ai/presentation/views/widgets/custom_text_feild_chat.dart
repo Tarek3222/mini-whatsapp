@@ -24,8 +24,11 @@ class CustomTextFeildChat extends StatelessWidget {
       focusNode: focusNode,
       onChanged: onChanged,
       controller: textEditingController,
+
       maxLines: null, // Allows the field to grow dynamically
-      style: Styles.font18Medium(context),
+      style: Styles.font18Medium(context).copyWith(
+        color: Theme.of(context).colorScheme.onSecondary,
+      ),
       decoration: InputDecoration(
         hintText: hintTitle,
         hintStyle: Styles.font18Medium(context)

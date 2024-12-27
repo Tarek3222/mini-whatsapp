@@ -29,7 +29,7 @@ class AvatarNewStatus extends StatelessWidget {
             ? user!.image!.isEmpty
                 ? 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png'
                 : user!.image!
-            : 'https://i.pravatar.cc/300',
+            : 'https://cdn-icons-png.flaticon.com/512/6927/6927593.png',
         seenColor: Colors.grey,
         unSeenColor: AppColors.primaryColor,
       ),

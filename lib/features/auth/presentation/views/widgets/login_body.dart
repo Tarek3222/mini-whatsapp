@@ -130,7 +130,8 @@ class _LoginBodyState extends State<LoginBody> {
                               if (formKey.currentState!.validate()) {
                                 if (!emailController.text.contains('@')) {
                                   showSnackBar(context,
-                                      message: 'Please enter a valid email');
+                                      message: 'Please enter a valid email',
+                                      color: Colors.red);
                                 } else {
                                   BlocProvider.of<LoginCubit>(context)
                                       .loginUser(

@@ -21,7 +21,7 @@ class CustomBuildNetworkImage extends StatelessWidget {
       placeholder: (context, url) => CircularProgressIndicator(),
       imageBuilder: (context, imageProvider) => Container(
         width: width ?? 200.w,
-        height: height ?? 200.h,
+        height: height ?? 230.h,
         decoration: BoxDecoration(
           borderRadius: borderRadius ?? BorderRadius.circular(30),
           image: DecorationImage(

@@ -67,13 +67,21 @@ class ChatAiBody extends StatelessWidget {
               },
             );
           } else {
-            return const Center(
-              child: Text('start chat with Gemini 😘'),
+            return Center(
+              child: Text(
+                'start chat with Gemini 😘',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
             );
           }
         } else if (snapshot.hasError) {
           return Center(
-            child: Text(snapshot.error.toString()),
+            child: Text(
+              snapshot.error.toString(),
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
           );
         } else {
           return CustomLoadingIndecator();

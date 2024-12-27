@@ -5,8 +5,9 @@ void showSnackBar(
   context, {
   required String message,
   EdgeInsetsGeometry? margin,
+  Color? color,
 }) {
   ScaffoldMessenger.of(context).showSnackBar(
-    customSnackBar(text: message, margin: margin),
+    customSnackBar(text: message, margin: margin, color: color),
   );
 }

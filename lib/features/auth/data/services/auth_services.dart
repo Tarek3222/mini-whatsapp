@@ -1,3 +1,4 @@
+import 'package:clone_chat/core/constants/strings_constants.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/utils/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,5 +47,14 @@ class AuthServices {
 
   Future<void> updatePassword({required String password}) async {
     await auth.currentUser!.updatePassword(password);
+  }
+
+  Future<bool> userExists({required String email}) async {
+    final data = await getIt
+        .get<UserServices>()
+        .users
+        .where(kEmailUser, isEqualTo: email)
+        .get();
+    return data.docs.isNotEmpty;
   }
 }

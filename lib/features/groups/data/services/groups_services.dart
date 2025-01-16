@@ -35,14 +35,16 @@ class GroupsServices {
       adminId: getIt.get<AuthServices>().auth.currentUser!.uid,
       image: file != null ? imageUrl : kImageGroupDefault,
       lastMessage: '',
-      lastMessageTime: '',
+      lastMessageTime: time,
     );
 
     return await groupsCollection.doc(time).set(groupChatModel.toJson());
   }
 
   Stream<QuerySnapshot> getAllGroups() {
-    return groupsCollection.snapshots();
+    return groupsCollection
+        .orderBy('lastMessageTime', descending: true)
+        .snapshots();
   }
 
   Future<void> updateLastMessage({

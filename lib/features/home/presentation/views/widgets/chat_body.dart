@@ -133,9 +133,11 @@ class _ChatBodyState extends State<ChatBody> {
                           child: ChatMessageField(
                               messageController: messageController,
                               onTap: () {
-                                setState(() {
-                                  isShowingEmoji = false;
-                                });
+                                if (isShowingEmoji) {
+                                  setState(() {
+                                    isShowingEmoji = false;
+                                  });
+                                }
                               }),
                         ),
                         IconButton(

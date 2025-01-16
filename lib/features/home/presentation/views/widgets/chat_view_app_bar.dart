@@ -51,12 +51,23 @@ class ChatViewAppBar extends StatelessWidget implements PreferredSizeWidget {
                             : Theme.of(context).colorScheme.secondary,
                         fontSize: 12.sp,
                       ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ],
             ),
           ],
         ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.call,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+      ],
       shape: RoundedRectangleBorder(
         side: BorderSide(
           width: 0.5,

@@ -36,18 +36,16 @@ class AvatarChat extends StatelessWidget {
         borderRadius: BorderRadius.circular(28.r),
       ),
       backgroundColor: Colors.white,
-      // title: Text(
-      //   user.name ?? '',
-      //   maxLines: 1,
-      //   overflow: TextOverflow.ellipsis,
-      // ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CustomBuildNetworkImage(
             messegeUrl: user.image!,
             width: double.infinity,
-            borderRadius: BorderRadius.circular(28.r),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(28.r),
+              topRight: Radius.circular(28.r),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

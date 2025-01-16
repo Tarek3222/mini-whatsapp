@@ -32,6 +32,10 @@ class HomeBottomNavBar extends StatelessWidget {
           Icons.group,
           color: Colors.white,
         ),
+        Icon(
+          Icons.call,
+          color: Colors.white,
+        ),
       ],
     );
   }

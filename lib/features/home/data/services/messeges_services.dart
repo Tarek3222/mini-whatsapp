@@ -65,13 +65,13 @@ class MessegesServices {
       createdAt: DateTime.now(),
       toId: user.uid,
     );
-    // await getIt.get<NotificationsServices>().sendNotifications(
-    //       fcmToken: user.pushToken!,
-    //       name: getIt.get<AuthServices>().auth.currentUser!.displayName!,
-    //       message: msg,
-    //       userId: getIt.get<AuthServices>().auth.currentUser!.uid,
-    //       type: type.name,
-    //     );
+    await getIt.get<NotificationsServices>().sendNotifications(
+          fcmToken: user.pushToken!,
+          name: getIt.get<AuthServices>().auth.currentUser!.displayName!,
+          message: msg,
+          userId: getIt.get<AuthServices>().auth.currentUser!.uid,
+          type: type.name,
+        );
     await getIt
         .get<UserServices>()
         .updateLastMessageTime(time: time, uid: user.uid!);

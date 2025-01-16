@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:clone_chat/features/calls/presentation/views/calls_view.dart';
 import 'package:clone_chat/features/groups/presentation/views/groups_view.dart';
 import 'package:clone_chat/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:clone_chat/features/home/presentation/views/widgets/home_bottom_nav_bar.dart';
@@ -23,6 +24,7 @@ class _HomeViewState extends State<HomeView> {
     const ChatsView(),
     const StatusView(),
     const GroupsView(),
+    const CallsView(),
   ];
   @override
   Widget build(BuildContext context) {

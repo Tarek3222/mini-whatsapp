@@ -53,7 +53,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
           SizedBox(
             height: 70,
           ),
-          Text('The best chat app of this century'),
+          Text(
+            'The best chat app of this century',
+            style: TextStyle(color: AppColors.primaryColor),
+          ),
         ],
       ),
     );

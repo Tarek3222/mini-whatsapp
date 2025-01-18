@@ -6,7 +6,6 @@ import 'package:clone_chat/core/function/show_snack_bar.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/core/widgets/custom_loading_indecator.dart';
 import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
-import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/login_cubit.dart';
 import 'package:clone_chat/features/auth/presentation/view_model/login_cubit/login_state.dart';
 import 'package:clone_chat/features/auth/presentation/views/widgets/email_field.dart';
@@ -19,6 +18,7 @@ import 'package:clone_chat/features/auth/presentation/views/widgets/register_row
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -48,6 +48,8 @@ class _LoginBodyState extends State<LoginBody> {
         if (state is LoginSuccess) {
           if (state.userCredential.user != null &&
               state.userCredential.user!.emailVerified) {
+            SharedPreferences prefs = getIt<SharedPreferences>();
+            await prefs.setString('password', passwordController.text.trim());
             GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
           } else {
             try {
@@ -112,40 +114,9 @@ class _LoginBodyState extends State<LoginBody> {
                       },
                     ),
                     ForgetPasswordWidget(
-                      onPressed: () async {
-                        if (emailController.text.isNotEmpty &&
-                            emailController.text.contains('@')) {
-                          try {
-                            await getIt<AuthServices>().resetPassword(
-                              email: emailController.text.trim(),
-                            );
-                            showAwsomeDialog(
-                              message: 'Check your email to reset password',
-                              context: context,
-                              title: 'Reset Password',
-                              dialogType: DialogType.success,
-                              btnCancelOnPress: () {},
-                            );
-                          } catch (e) {
-                            showAwsomeDialog(
-                              message:
-                                  'Please enter a valid email, to reset password',
-                              context: context,
-                              title: 'Error',
-                              dialogType: DialogType.error,
-                              btnOkOnPress: () {},
-                            );
-                          }
-                        } else {
-                          showAwsomeDialog(
-                            message:
-                                'Please enter a valid email, to reset password',
-                            context: context,
-                            title: 'Error',
-                            dialogType: DialogType.error,
-                            btnOkOnPress: () {},
-                          );
-                        }
+                      onPressed: () {
+                        GoRouter.of(context)
+                            .push(AppRouters.kForgetPasswordView);
                       },
                     ),
                     const SizedBox(
@@ -154,13 +125,13 @@ class _LoginBodyState extends State<LoginBody> {
                     state is LoginLoading
                         ? const CustomLoadingIndecator()
                         : LoginButton(
-                            emailController: emailController,
-                            passwordController: passwordController,
+                            text: 'Login',
                             onTap: () {
                               if (formKey.currentState!.validate()) {
                                 if (!emailController.text.contains('@')) {
                                   showSnackBar(context,
-                                      message: 'Please enter a valid email');
+                                      message: 'Please enter a valid email',
+                                      color: Colors.red);
                                 } else {
                                   BlocProvider.of<LoginCubit>(context)
                                       .loginUser(
@@ -168,9 +139,11 @@ class _LoginBodyState extends State<LoginBody> {
                                           password: passwordController.text);
                                 }
                               } else {
-                                setState(() {
-                                  autovalidateMode = AutovalidateMode.always;
-                                });
+                                setState(
+                                  () {
+                                    autovalidateMode = AutovalidateMode.always;
+                                  },
+                                );
                               }
                             },
                           ),

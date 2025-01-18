@@ -1,5 +1,7 @@
 import 'package:clone_chat/core/themes/app_colors.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeBottomNavBar extends StatelessWidget {
   const HomeBottomNavBar(
@@ -9,42 +11,26 @@ class HomeBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.white,
-      selectedLabelStyle: TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
-      elevation: 0,
-      type: BottomNavigationBarType.fixed,
-      showUnselectedLabels: true,
-      unselectedLabelStyle: TextStyle(color: Colors.grey),
-      selectedItemColor: AppColors.primaryColor,
-      unselectedIconTheme: IconThemeData(
-        color: AppColors.primaryColor,
-      ),
-      currentIndex: selectedIndex,
+    return CurvedNavigationBar(
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      index: selectedIndex,
       onTap: onTap,
+      buttonBackgroundColor: AppColors.primaryColor,
+      color: AppColors.primaryColor,
+      animationDuration: const Duration(milliseconds: 300),
+      height: 60.h,
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.chat,
-          ),
-          label: 'Chats',
-          tooltip: 'Chats',
+        Icon(
+          Icons.chat,
+          color: Colors.white,
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.tips_and_updates_rounded,
-          ),
-          label: 'Status',
-          tooltip: 'Status',
+        Icon(
+          Icons.tips_and_updates,
+          color: Colors.white,
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.call,
-          ),
-          label: 'Calls',
-          tooltip: 'Calls',
+        Icon(
+          Icons.group,
+          color: Colors.white,
         ),
       ],
     );

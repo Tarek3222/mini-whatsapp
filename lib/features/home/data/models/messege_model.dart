@@ -5,9 +5,16 @@ class MessegeModel {
   String? read;
   Type? type;
   String? sent;
+  DateTime? createdAt;
 
   MessegeModel(
-      {this.fromId, this.toId, this.message, this.read, this.type, this.sent});
+      {this.fromId,
+      this.toId,
+      this.message,
+      this.read,
+      this.type,
+      this.sent,
+      this.createdAt});
 
   factory MessegeModel.fromJson(Map<String, dynamic> json) => MessegeModel(
         fromId: json['fromId'] ?? '',
@@ -16,6 +23,7 @@ class MessegeModel {
         read: json['read'] ?? '',
         type: json['type'] == Type.image.name ? Type.image : Type.text,
         sent: json['sent'] ?? '',
+        createdAt: json['createdAt'].toDate() as DateTime?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +33,7 @@ class MessegeModel {
         'read': read,
         'type': type?.name,
         'sent': sent,
+        'createdAt': createdAt
       };
 }
 

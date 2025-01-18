@@ -12,6 +12,8 @@ Widget defaultText({
   IconData? prefixIcon,
   IconData? suffixIcon,
   VoidCallback? suffixPressed,
+  required BuildContext context,
+  Color? color,
 }) {
   return TextFormField(
     keyboardType: type,
@@ -21,11 +23,18 @@ Widget defaultText({
     validator: validate,
     decoration: InputDecoration(
       labelText: label,
+      labelStyle: TextStyle(
+        color: color ?? Theme.of(context).colorScheme.secondary,
+      ),
       hintText: hint,
+      hintStyle: TextStyle(
+        color: color ?? Theme.of(context).colorScheme.secondary,
+      ),
       prefixIcon: prefixIcon == null
           ? null
           : Icon(
               prefixIcon,
+              color: Theme.of(context).colorScheme.secondary,
             ),
       suffixIcon: suffixIcon == null
           ? null
@@ -33,6 +42,7 @@ Widget defaultText({
               onPressed: suffixPressed,
               icon: Icon(
                 suffixIcon,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
       border: OutlineInputBorder(
@@ -47,6 +57,7 @@ Widget defaultText({
     ),
     style: TextStyle(
       fontSize: 14,
+      color: color ?? Theme.of(context).colorScheme.secondary,
     ),
   );
 }

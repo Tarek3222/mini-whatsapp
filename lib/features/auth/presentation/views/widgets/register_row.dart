@@ -15,6 +15,7 @@ class RegisterRow extends StatelessWidget {
           'Don\'t have an account?',
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            color: Colors.grey,
           ),
         ),
         TextButton(
@@ -23,7 +24,7 @@ class RegisterRow extends StatelessWidget {
           },
           child: Text(
             'Register here',
-            style: Styles.textStyle15,
+            style: Styles.textStyle15SemiBold(context),
           ),
         ),
       ],

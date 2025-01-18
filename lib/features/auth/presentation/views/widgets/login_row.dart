@@ -13,6 +13,7 @@ class LoginRow extends StatelessWidget {
           'Already have an account?',
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            color: Colors.grey,
           ),
         ),
         TextButton(
@@ -21,7 +22,7 @@ class LoginRow extends StatelessWidget {
           },
           child: Text(
             'Login here',
-            style: Styles.textStyle15,
+            style: Styles.textStyle15SemiBold(context),
           ),
         ),
       ],

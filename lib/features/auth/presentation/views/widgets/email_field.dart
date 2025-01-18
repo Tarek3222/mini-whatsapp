@@ -7,6 +7,7 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return defaultText(
+      context: context,
       type: TextInputType.emailAddress,
       label: 'Email Address',
       hint: 'Enter your email address',

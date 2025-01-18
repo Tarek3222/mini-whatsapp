@@ -46,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ),
           Text(
             'WhatsUp',
-            style: Styles.textStyle24.copyWith(
+            style: Styles.textStyle24SemiBold(context).copyWith(
               color: AppColors.primaryColor,
             ),
           ),
@@ -61,7 +61,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToLogin() {
     Future.delayed(
-      const Duration(milliseconds: 3000),
+      const Duration(milliseconds: 1500),
       () {
         isUserLoggedIn();
       },
@@ -81,7 +81,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void initScalingAnimation() {
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 2500),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     )..repeat();
     _animation = CurvedAnimation(

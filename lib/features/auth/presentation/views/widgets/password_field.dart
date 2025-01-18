@@ -14,6 +14,7 @@ class PasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return defaultText(
+      context: context,
       type: TextInputType.visiblePassword,
       label: 'Password',
       hint: 'Enter your password',

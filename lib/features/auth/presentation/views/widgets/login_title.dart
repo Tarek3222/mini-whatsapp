@@ -10,7 +10,7 @@ class LoginTitle extends StatelessWidget {
       fit: BoxFit.scaleDown,
       child: Text(
         'Log in to your account',
-        style: Styles.textStyle24,
+        style: Styles.textStyle24SemiBold(context),
         textAlign: TextAlign.center,
       ),
     );

@@ -36,6 +36,7 @@ class MyRepo {
               lastMessageTime: '',
               createdAt: time,
               lastActive: time,
+              stories: [],
             ));
       }
       return Right(userCred);

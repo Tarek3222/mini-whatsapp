@@ -14,6 +14,7 @@ class ChatUser {
   String? lastMessageTime;
   String? about;
   bool? isSeen;
+  List? stories;
 
   ChatUser({
     this.name,
@@ -29,6 +30,7 @@ class ChatUser {
     this.lastMessage,
     this.lastMessageTime,
     this.isSeen,
+    this.stories,
   });
 
   factory ChatUser.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class ChatUser {
       lastMessageTime: json[kLastMessageTime] as String?,
       isSeen: json[kIsSeen] as bool?,
       about: json[kAboutUser] as String?,
+      stories: json['stories'] as List?,
     );
   }
 
@@ -64,6 +67,7 @@ class ChatUser {
       kIsSeen: isSeen,
       kAboutUser: about,
       kPhoneUser: phone,
+      'stories': stories
     };
   }
 }

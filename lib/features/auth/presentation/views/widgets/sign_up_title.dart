@@ -10,7 +10,7 @@ class SignUpTitle extends StatelessWidget {
       fit: BoxFit.scaleDown,
       child: Text(
         'Register To New Account',
-        style: Styles.textStyle24,
+        style: Styles.textStyle24SemiBold(context),
         textAlign: TextAlign.center,
       ),
     );

@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,
-    required this.emailController,
-    required this.passwordController,
     required this.onTap,
+    required this.text,
   });
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final VoidCallback onTap;
 
+  final VoidCallback onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return CustomButton(
       borderRadius: BorderRadius.circular(22),
-      text: 'Log In',
+      text: text,
       onPressed: onTap,
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class FieldWithShadow extends StatelessWidget {
@@ -7,8 +9,8 @@ class FieldWithShadow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
-      elevation: 30,
+      color: Theme.of(context).colorScheme.secondary,
+      elevation: 0.3,
       shadowColor: Colors.white.withOpacity(0.7),
       borderRadius: BorderRadius.circular(30),
       child: child,

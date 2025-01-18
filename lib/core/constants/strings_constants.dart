@@ -16,3 +16,6 @@ const String kIsOnline = 'isOnline';
 
 //  For Messeges
 const String kMessagesCollection = 'messeges';
+
+const String kImageGroupDefault =
+    'https://cdn-icons-png.flaticon.com/512/681/681494.png';

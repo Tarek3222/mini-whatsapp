@@ -15,6 +15,7 @@ class ChatUser {
   String? about;
   bool? isSeen;
   List? stories;
+  bool? enabledNotify;
 
   ChatUser({
     this.name,
@@ -31,11 +32,13 @@ class ChatUser {
     this.lastMessageTime,
     this.isSeen,
     this.stories,
+    this.enabledNotify = true,
   });
 
   factory ChatUser.fromJson(Map<String, dynamic> json) {
     return ChatUser(
       name: json[kNameUser] as String?,
+      enabledNotify: json['enabledNotify'] as bool?,
       email: json[kEmailUser] as String?,
       image: json[kImageUser] as String?,
       phone: json[kPhoneUser] as String?,
@@ -67,7 +70,8 @@ class ChatUser {
       kIsSeen: isSeen,
       kAboutUser: about,
       kPhoneUser: phone,
-      'stories': stories
+      'stories': stories,
+      'enabledNotify': enabledNotify,
     };
   }
 }

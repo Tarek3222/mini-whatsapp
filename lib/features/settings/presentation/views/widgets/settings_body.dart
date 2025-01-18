@@ -9,6 +9,8 @@ import 'package:clone_chat/core/widgets/show_awsome_dialog.dart';
 import 'package:clone_chat/features/auth/data/services/auth_services.dart';
 import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_cubit.dart';
 import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_state.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/enable_notifications/enable_notify_cubit.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/enable_notifications/enable_notify_state.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/change_password_bottom_sheet.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/custom_list_tile.dart';
 import 'package:clone_chat/features/settings/presentation/views/widgets/custom_list_tile_with_tralling.dart';
@@ -37,11 +39,19 @@ class SettingsBody extends StatelessWidget {
             );
           },
         ),
-        CustomListTileWithTralling(
-          icon: Icons.notifications,
-          title: 'Notifications',
-          switchValue: false,
-          onChanged: (value) {},
+        BlocBuilder<EnableNotifyCubit, EnableNotifyState>(
+          builder: (context, state) {
+            return CustomListTileWithTralling(
+              icon: Icons.notifications,
+              title: 'Notifications',
+              switchValue:
+                  BlocProvider.of<EnableNotifyCubit>(context).isEnabled,
+              onChanged: (value) {
+                BlocProvider.of<EnableNotifyCubit>(context)
+                    .changeEnabledNotify(value);
+              },
+            );
+          },
         ),
         CustomListTile(
           title: 'Change Password',

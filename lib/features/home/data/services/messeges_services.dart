@@ -42,7 +42,11 @@ class MessegesServices {
   }
 
   // for adding an user to my users when first message is sent
-  Future<void> sendFirstMessage(ChatUser user, String msg, Type type) async {
+  Future<void> sendFirstMessage(
+    ChatUser user,
+    String msg,
+    Type type,
+  ) async {
     await getIt
         .get<UserServices>()
         .users
@@ -50,11 +54,19 @@ class MessegesServices {
         .collection("my_users")
         .doc(AuthServices().auth.currentUser!.uid)
         .set({}).then((value) {
-      sendMessage(user, msg, type);
+      sendMessage(
+        user,
+        msg,
+        type,
+      );
     });
   }
 
-  Future<void> sendMessage(ChatUser user, String msg, Type type) async {
+  Future<void> sendMessage(
+    ChatUser user,
+    String msg,
+    Type type,
+  ) async {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
     final MessegeModel messege = MessegeModel(
       fromId: getIt.get<AuthServices>().auth.currentUser!.uid,
@@ -65,13 +77,19 @@ class MessegesServices {
       createdAt: DateTime.now(),
       toId: user.uid,
     );
-    await getIt.get<NotificationsServices>().sendNotifications(
-          fcmToken: user.pushToken!,
-          name: getIt.get<AuthServices>().auth.currentUser!.displayName!,
-          message: msg,
-          userId: getIt.get<AuthServices>().auth.currentUser!.uid,
-          type: type.name,
-        );
+    var currentUser = await getIt.get<UserServices>().getCurrentUser().first;
+    ChatUser myUser =
+        ChatUser.fromJson(currentUser.data()! as Map<String, dynamic>);
+    bool isNotifyEnalbled = myUser.enabledNotify!;
+    if (isNotifyEnalbled) {
+      await getIt.get<NotificationsServices>().sendNotifications(
+            fcmToken: user.pushToken!,
+            name: getIt.get<AuthServices>().auth.currentUser!.displayName!,
+            message: msg,
+            userId: getIt.get<AuthServices>().auth.currentUser!.uid,
+            type: type.name,
+          );
+    }
     await getIt
         .get<UserServices>()
         .updateLastMessageTime(time: time, uid: user.uid!);
@@ -123,6 +141,10 @@ class MessegesServices {
         'chatsImages/${MessegesServices.getConversationId(user.uid!)}/$fileName'); // create ref for storage and the name is all_images (folrder)
     await refStorage.putFile(file);
     String imageUrl = await refStorage.getDownloadURL();
-    return await sendMessage(user, imageUrl, Type.image);
+    return await sendMessage(
+      user,
+      imageUrl,
+      Type.image,
+    );
   }
 }

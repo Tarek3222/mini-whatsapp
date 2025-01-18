@@ -20,6 +20,7 @@ import 'package:clone_chat/features/status/presentation/views/add_new_status_vie
 import 'package:clone_chat/features/status/presentation/views/my_all_status_view.dart';
 import 'package:clone_chat/features/status/presentation/views/single_item_story_view.dart';
 import 'package:clone_chat/features/status/presentation/views/stories_view.dart';
+import 'package:clone_chat/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,7 +40,10 @@ abstract class AppRouters {
   static const String kChatAiView = '/ChatAiView';
   static const String kGroupChatView = '/groupChatView';
   static const String kForgetPasswordView = '/forgetPasswordView';
+  static const String kCallPage = '/callPage';
+  static const String kVideoCallPage = '/videoCallPage';
   static final router = GoRouter(
+    navigatorKey: navigatorKey,
     routes: [
       GoRoute(
         path: '/',

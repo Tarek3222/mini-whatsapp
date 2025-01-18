@@ -5,6 +5,7 @@ import 'package:clone_chat/core/themes/app_theme.dart';
 import 'package:clone_chat/core/utils/service_locator.dart';
 import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_cubit.dart';
 import 'package:clone_chat/features/settings/presentation/view_model/change_theme/change_theme_state.dart';
+import 'package:clone_chat/features/settings/presentation/view_model/enable_notifications/enable_notify_cubit.dart';
 import 'package:clone_chat/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,10 @@ import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:flutter_notification_channel/notification_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
+import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +26,16 @@ void main() async {
   );
   notificationsChannel();
   setUpServiceLocator();
-  runApp(const MiniChatApp());
+
+  /// 1.1.2: set navigator key to ZegoUIKitPrebuiltCallInvitationService
+  ZegoUIKitPrebuiltCallInvitationService().setNavigatorKey(navigatorKey);
+  ZegoUIKit().initLog().then((value) {
+    ZegoUIKitPrebuiltCallInvitationService().useSystemCallingUI(
+      [ZegoUIKitSignalingPlugin()],
+    );
+
+    runApp(const MiniChatApp());
+  });
 }
 
 class MiniChatApp extends StatelessWidget {
@@ -35,8 +49,15 @@ class MiniChatApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return BlocProvider(
-          create: (context) => ChangeThemeCubit()..init(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => ChangeThemeCubit()..init(),
+            ),
+            BlocProvider(
+              create: (context) => EnableNotifyCubit()..init(),
+            ),
+          ],
           child: Builder(builder: (context) {
             return BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
               builder: (context, state) {

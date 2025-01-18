@@ -88,6 +88,16 @@ class UserServices {
     );
   }
 
+  Future<void> updateEnableNotification({required bool isEnabled}) async {
+    return await users
+        .doc(getIt.get<AuthServices>().auth.currentUser!.uid)
+        .update(
+      {
+        'enabledNotify': isEnabled,
+      },
+    );
+  }
+
   //for Adding new chat User
   Future<bool> addNewChatUser({required String email}) async {
     final data = await users.where(kEmailUser, isEqualTo: email).get();

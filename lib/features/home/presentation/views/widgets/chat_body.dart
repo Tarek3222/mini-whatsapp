@@ -149,6 +149,7 @@ class _ChatBodyState extends State<ChatBody> {
                               setState(() {
                                 isUploadingImage = true;
                               });
+
                               await MessegesServices().sendImage(
                                 widget.chatUser,
                                 File(imageGellery.path),

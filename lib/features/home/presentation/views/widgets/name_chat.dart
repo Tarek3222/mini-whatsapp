@@ -15,6 +15,7 @@ class NameChat extends StatelessWidget {
         color: Theme.of(context).colorScheme.secondary,
       ),
       overflow: TextOverflow.ellipsis,
+      maxLines: 1,
     );
   }
 }

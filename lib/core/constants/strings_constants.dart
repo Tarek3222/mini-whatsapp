@@ -13,6 +13,9 @@ const String kPushToken = 'pushToken';
 const String kLastMessageTime = 'lastMessageTime';
 const String kIsSeen = 'isSeen';
 const String kIsOnline = 'isOnline';
+const int kAppId = 1462396097;
+const String kAppSign =
+    'cfbe45faf7ea807a717aab281fee683d421ac69528a3732db8d3cc3ebf852d12';
 
 //  For Messeges
 const String kMessagesCollection = 'messeges';
